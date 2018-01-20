@@ -1,0 +1,222 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Hello, AMPs</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+ <style amp-custom>
+  /* any custom style goes here */
+  amp-img {
+    background-color: gray;
+    border: 1px solid black;
+  }
+  div{
+ 	background-color: #F2F2F2;
+ 
+  }
+  .pixelDiv{
+  	border: 3px solid #848484;
+ 	margin-top: 20px;
+  }
+  .listUl{
+  list-style-type:none
+  }
+  .consoleLog{
+  border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;
+  }
+  
+  .small-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	margin-bottom: 10px;
+	right: 10px;
+}
+
+.main-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	border-color: #33C3F0;
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+p {
+	margin-top: 0;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+div {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+
+body {
+	max-width: 600px;
+	margin: 10px;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+
+  </head>
+  <body>
+	<h1>Payment Request API Demo with Tez</h1>
+
+	<p>
+		This Payment request API demo shows a dummy payment with Visa and
+		Master cards enabled by default. This demo also has Digital Payment
+		App Tez enabled. The payment options can be customised in the Payment
+		Settings<a href="#" on="change:AMP.setState({ option: event.value })" >show/hide</a>. The payment informations is not saved or transmitted to
+		the server in this demo.
+	</p>
+   
+   	<div id="customizePayment" 
+    [hidden]="option != 1">
+
+		<fieldset>
+			<legend>Payment Settings</legend>
+			<fieldset>
+				<legend>Basic cards</legend>
+				<input type="checkbox" id="mastercard" value="mastercard" checked />mastercard
+				<br /> <input type="checkbox" id="visa" value="visa" checked />visa<br />
+				<input type="checkbox" id="amex" value="amex" />amex<br /> <input
+					type="checkbox" id="diners" value="diners" />diners<br /> <input
+					type="checkbox" id="discover" value="discover" />discover<br /> <input
+					type="checkbox" id="jcb" value="jcb" />jcb<br /> <input
+					type="checkbox" id="unionpay" value="unionpay" />unionpay<br /> <input
+					type="checkbox" id="mir" value="mir" />mir<br />
+			</fieldset>
+
+			<fieldset>
+				<legend>Other payment methods</legend>
+				<input type="checkbox" id="tez" value="tez" checked />Tez <br />
+				<input type="checkbox" id="payWithGoogle" value="payWithGoogle" checked />Pay with Google <br />
+
+			</fieldset>
+		</fieldset>
+
+		<button class="small-button">Save</button>
+
+	</div>
+	
+	<label><h2>Sample Transaction: </h2></label>
+	<div class="pixelDiv">
+		<ul class="listUl">
+		<li><h2>Google Pixel 2 (Just Black, 64 GB)  (4 GB RAM)</h2></li>
+			<li><amp-img
+    src="images/pixel2.jpeg"
+    width="250"
+    height="517"
+    layout="responsive"
+    alt="Pixel 2 image"></li>
+			<li><span>Original price Rs 61,000/- </span><br>
+			    <span><b>Offer price 45,750/- @ 25% discount</b></span><br>
+			</li>
+			
+			<li><button class="main-button">Buy
+					now</button></li>
+		</ul>
+
+	</div>
+
+	<label><h2>Console Output:</h2></label>
+	<div class="consoleLog">
+	<p id="consoleLog"></p>
+	</div>
+
+	<div id="snackbar"></div>
+	
+    
+</amp-img>
+    
+  </body>
+</html>
