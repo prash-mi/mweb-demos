@@ -29,7 +29,7 @@
 <body onload="javascript:pageView()">
     <h1>mWeb Demos</h1>
 
-  <p>Select a Demo</p>
+  <p>Select a Demo. Source Code is publised at:<a href='https://github.com/prash-mi/mweb-demos'>https://github.com/prash-mi/mweb-demos</a> </p>
   <table>
     <tr>
       <td colspan="2" style="font-weight:bold;">Available Links:</td>
@@ -41,6 +41,8 @@
     <tr><td><a href='payment-request-tez/'>Payment Request Demo with Tez (as single payment method)</a></td></tr>
      <tr><td><a href='payment-request-pwa/'>Payment Request Demo - PWA</a></td></tr>
       <tr><td><a href='payment-request-tez-pwa/'>Payment Request Demo with Tez (as single payment method - PWA)</a></td></tr>
+         <tr><td><a href='/amp/payment-request/'>Payment Request Demo with Tez (AMP - Work in progress!)</a></td></tr>
+              <tr><td><a href='pwa-in-15/'>PWA in 15 mins code lab</a></td></tr>
   </table>
 
 </body>

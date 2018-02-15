@@ -46,8 +46,24 @@ function savePaymentOptions(){
 	
 	log('update payment options: '+ networks+ (tezEnabled?' tez':''));
 	showToast('Payment options saved!');
-	//togglePayment();
+
+	//checking on save
+	checkCanMakePayment();
 }
+
+//for checking if browser supports the selected payment options
+function checkCanMakePayment(){
+	  let paymentReq = initPaymentRequest();
+
+		paymentReq.canMakePayment()
+		.then((canMake)=>{
+				log('canMakePayment(): '+canMake);
+		})
+		.catch((e)=>{
+			log('Err: canMakePayment '+e);
+		});
+}
+
 function togglePayment(){
 	
 	var customizePayment = document.getElementById("customizePayment");

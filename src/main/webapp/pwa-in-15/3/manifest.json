@@ -1,0 +1,21 @@
+{
+    "short_name": "PWA in 15 Minutes",
+    "name": "PWA Demo in 15 Minutes",
+    "start_url": "index.html",
+    "icons": [
+        {
+            "src": "images/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "background_color": "#0F0080",
+    "theme_color": "#0F0080",
+    "orientation": "portrait",
+    "display": "standalone"
+}
