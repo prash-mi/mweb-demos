@@ -30,7 +30,7 @@
     <h1>PWA in 15 mins code lab</h1>
 
   <p>Short Link: <a href='https://goo.gl/hMHSMh'>https://goo.gl/hMHSMh</a> </p>
-  <p>This is a quick code lab showing conversion of a sample ecommerse mWeb into a PWA supporting Offine experience and Add-to-homescreen. 
+  <p>This is a quick code lab showing conversion of a sample ecommerse mWeb into a PWA supporting Offine experience and Add-to-homescreen. <a href='pwa-in-15.zip'>Download Source Code</a>
   </br>
    <div style="margin-top: 20px">
     <b>Snippet1: To be pasted in the placeholder 'Insert snippet1 here' at index.html</b>

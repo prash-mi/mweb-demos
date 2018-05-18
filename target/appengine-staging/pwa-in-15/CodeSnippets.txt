@@ -1,0 +1,16 @@
+Snippet1:
+
+		if("serviceWorker" in navigator) {
+					navigator.serviceWorker.register("sw.js").then(function(reg){
+							console.log('ServiceWorker register with scope: ', reg.scope);
+					}).catch(function(err) {
+							console.log('ServiceWorker registration failed: ', err);
+					});
+			}
+
+
+		});
+
+
+Snippet2:
+<link rel="manifest" href="./manifest.json">
