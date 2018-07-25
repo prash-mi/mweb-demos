@@ -41,7 +41,7 @@ handlers:
   script: unused
   login: optional
   secure: always
-- url: /hello
+- url: /formservlet
   script: unused
   login: optional
   secure: always

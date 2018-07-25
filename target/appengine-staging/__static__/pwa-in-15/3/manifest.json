@@ -1,15 +1,15 @@
 {
-    "short_name": "PWA in 15 Minutes",
-    "name": "PWA Demo in 15 Minutes",
+    "short_name": "PWA in 15 Minutes - Updated",
+    "name": "PWA Demo in 15 Minutes - Updated",
     "start_url": "index.html",
     "icons": [
         {
-            "src": "images/icon-192.png",
+            "src": "images/icon-192-2.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "images/icon-512.png",
+            "src": "images/icon-512-2.png",
             "type": "image/png",
             "sizes": "512x512"
         }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.demos.mwebdemo.HelloAppEngine" %>
 <html>
 <head>
 <meta name="description" content="PWA in 15 mins code lab. Progressive Web App Code Lab"/>

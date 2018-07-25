@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://smartlock.google.com/client"></script>
+<meta charset="UTF-8">
+<title>OneTap Sign-in</title>
+<script type="text/javascript">
+window.onGoogleYoloLoad = (googleyolo) => {
+	  // The 'googleyolo' object is ready for use.
+	  console.log("The 'googleyolo' object is ready for use");
+	  
+	  const retrievePromise = googleyolo.retrieve({
+		  supportedAuthMethods: [
+		    "https://accounts.google.com",
+		    "googleyolo://id-and-password"
+		  ],
+		  supportedIdTokenProviders: [
+		    {
+		      uri: "https://accounts.google.com",
+		      clientId: "916238640308-1t707vvo70jg4c1gjc0sncsvhtjtht0a.apps.googleusercontent.com"
+		    }
+		  ]
+		});
+
+	  retrievePromise.then((credential) => {
+		  if (credential.password) {
+		    // An ID (usually email address) and password credential was retrieved.
+		    // Sign in to your backend using the password.
+		    console.log(credential.id, credential.password);
+		  } else {
+		    // A Google Account is retrieved. Since Google supports ID token responses,
+		    // you can use the token to sign in instead of initiating the Google sign-in
+		    // flow.
+		    console.log(credential.idToken);
+		  }
+		}, (error) => {
+		  // Credentials could not be retrieved. In general, if the user does not
+		  // need to be signed in to use the page, you can just fail silently; or,
+		  // you can also examine the error object to handle specific error cases.
+
+		  // If retrieval failed because there were no credentials available, and
+		  // signing in might be useful or is required to proceed from this page,
+		  // you can call `hint()` to prompt the user to select an account to sign
+		  // in or sign up with.
+		//  if (error.type === 'noCredentialsAvailable') {
+		//    googleyolo.hint(...).then(...);
+		//  }
+			console.log(error);
+		});
+
+	  
+	};
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

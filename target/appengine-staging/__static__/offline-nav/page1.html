@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Index -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PWA Nav FB</title>
+<!--  <link rel="stylesheet" type="text/css" href="inline.css">-->
+
+  <script type="text/javascript">
+  function registerSW(){
+	  if ('serviceWorker' in navigator) {
+		    navigator.serviceWorker
+		             .register('./sw.js')
+		             .then(function() { console.log('Service Worker Registered'); });
+		  }
+  }
+  
+
+  
+  </script>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+</head>
+
+<body onload="javascript:registerSW()">
+  <h1 >Offline Navigation test</h1>
+       <h1 ><br/>	<a href="page1.html">Page 1</a></h1>
+      <h1 ><br/>	<a href="page2.html">Page 2</a></h1>
+      
+      <p>Page 1</p>
+</body>
+</html>

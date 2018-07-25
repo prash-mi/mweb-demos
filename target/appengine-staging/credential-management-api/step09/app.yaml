@@ -1,0 +1,16 @@
+application: credential-management-api-codelab
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: ssl
+  version: latest
+- name: pycrypto
+  version: latest
+
+handlers:
+- url: .*
+  script: main.app
+  secure: always

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.demos.mwebdemo.HelloAppEngine" %>
 <html>
 <head>
 <meta name="description" content="Mobile web (mweb) demos showing Google Payment request API with Tez (paisa) integration"/>
@@ -40,6 +39,7 @@
     </tr>
     <tr><td><a href='payment-request-tez/'>Payment Request Demo with Tez (as single payment method)</a></td></tr>
      <tr><td><a href='payment-request-pwa/'>Payment Request Demo - PWA</a></td></tr>
+     <tr><td><a href='payment-request-pwa-canmakepayment/'>Payment Request Demo - PWA (With canMakePayment method)</a></td></tr>
       <tr><td><a href='payment-request-tez-pwa/'>Payment Request Demo with Tez (as single payment method - PWA)</a></td></tr>
          <tr><td><a href='/amp/payment-request/'>Payment Request Demo with Tez (AMP - Work in progress!)</a></td></tr>
               <tr><td><a href='pwa-in-15/'>PWA in 15 mins code lab</a></td></tr>

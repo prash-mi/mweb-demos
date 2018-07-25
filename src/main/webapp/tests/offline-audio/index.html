@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+ <link rel="manifest" href="./manifest.json">
+ 
+<script type="text/javascript">
+
+function onLoadInstalls(){
+	  if ('serviceWorker' in navigator) {
+		    navigator.serviceWorker
+		             .register('./sw_Offline.js')
+		             .then(function() { console.log('Service Worker Registered'); })
+		             .catch((e) => {console.log('Error registering SW: '+e);});
+		  }
+
+	/*  var audioPlayer = document.getElementById("audioPlayer");
+	  audioPlayer.addEventListener("click", (e) => {
+		e.preventDefault();
+	  	playAudio();
+	  	
+	  });
+*/
+}
+
+
+function playAudio(){
+	console.log('Play event received');
+	var mediaUrl = document.getElementById("mediaUrl").value
+	 || "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8";
+							//backup URLs					
+							//"http://vodhls-vh.akamaihd.net/i/songs/29/2048729/23046587/23046587_64.mp4/master.m3u8?set-akamai-hls-revision=5&hdnts=st=1522655292~exp=1523519292~acl=/i/songs/29/2048729/23046587/23046587_64.mp4/*~hmac=eb2b4c7eff541278dff91ce87090001d3cec71bb10b2e60064dc5901d2afc69b";
+						 	//"https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8";
+	    console.log('Attempting to play: '+mediaUrl);
+		var type = 'application/x-mpegURL'; 
+		var audio =  document.getElementById("audioPlayer");
+		audio.setAttribute('type', type);
+		audio.setAttribute('src', mediaUrl);
+		audio.load();
+		audio.play().then(() => {
+			console.log('Playing '+mediaUrl);
+		})
+		.catch((e) => {
+			console.log('Error occured '+e);
+		});
+		
+}
+
+
+
+//workbox.routing.registerRoute(/\/^http(.)*\//, workbox.strategies.cacheFirst({ cacheName: "media-cache", plugins: [new workbox.expiration.Plugin({"maxEntries":5}), new workbox.rangeRequests.Plugin()] }), 'GET');
+</script>
+
+<meta charset="UTF-8">
+<title>Player test</title>
+</head>
+<body onload="javascript:onLoadInstalls()">
+
+<div style="width: 100%; margin-bottom: 20px; margin-top: 20px" align="middle" onclick="javascript:playAudio()">
+<img alt="music" src="images/play.png" align="middle" width="50%">
+</div>
+
+<div  style="width: 100%">
+<audio controls id="audioPlayer">
+Your browser does not support the audio element.
+</audio>
+</div>
+
+ <label>URL To play:</label>
+<div  style="width: 100%">
+<input type="text" id="mediaUrl" value="https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8" width="100%">
+</div>
+<div  style="width: 100%" value="Play >" width="100%">
+<input type="button" onclick="javascript:playAudio()" value="Play >" width="100%">
+</div>
+ 
+ 
+ 
+</body>
+</html>

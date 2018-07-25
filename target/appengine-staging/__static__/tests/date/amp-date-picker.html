@@ -1,0 +1,56 @@
+<!doctype html>
+<html amp>
+
+<head>
+<link rel="canonical" href="./amp.html">
+<title>AMP Date picker example</title>
+<style amp-custom>
+  h1 {
+    color: red;
+  }
+</style>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+ <meta name="amp-experiments-opt-in" content="amp-date-picker">
+
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+<script async custom-element="amp-date-picker" src="https://cdn.ampproject.org/v0/amp-date-picker-0.1.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+
+</head>
+<body>
+<h3>AMP Date picker example</h3>
+
+	<form method="POST"  action-xhr="/formservlet" id="submit_form" target="_top">
+
+  <amp-date-picker
+      mode="overlay"
+      layout="container"
+      input-selector="[name=dob]">
+    <label for="dob">Date of Birth:</label>
+    <input type="text" name="dob">
+  </amp-date-picker>
+		
+		<input type="submit" value="OK" >
+      <div submit-success>
+		 <template type="amp-mustache">
+DOB echo from the server:  {{dob}}
+  </template>
+    </div>
+    
+    <div submit-error>
+      <template type="amp-mustache">
+        Submit Failed
+      </template>
+    </div>
+    
+	</form>
+</body>
+</html amp>
