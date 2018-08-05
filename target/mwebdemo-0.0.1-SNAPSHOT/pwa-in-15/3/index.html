@@ -33,7 +33,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		});
 
-
+		window.addEventListener('beforeinstallprompt', (event) => {
+			  console.log('beforeinstallprompt event fired')  
+			  event.preventDefault();
+			  event.prompt();
+			  
+			  event.userChoice.then((choice) => {
+				    if (choice.outcome === 'accepted') {
+				      console.log('User accepted the A2HS prompt');
+				    } else {
+				      console.log('User dismissed the A2HS prompt');
+				    }
+			  });
+			  
+			});
+		
 	</script>
 	<!-- //custom-theme -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
