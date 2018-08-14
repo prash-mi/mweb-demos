@@ -45,6 +45,10 @@ handlers:
   script: unused
   login: optional
   secure: always
+- url: /onetapauth
+  script: unused
+  login: optional
+  secure: always
 - url: .*\.jsp
   script: unused
   login: optional

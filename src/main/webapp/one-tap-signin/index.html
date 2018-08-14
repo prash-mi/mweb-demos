@@ -3,57 +3,163 @@
 <head>
 <script src="https://smartlock.google.com/client"></script>
 <meta charset="UTF-8">
-<title>OneTap Sign-in</title>
+<title>OneTap Sign-in Demo</title>
 <script type="text/javascript">
-window.onGoogleYoloLoad = (googleyolo) => {
-	  // The 'googleyolo' object is ready for use.
-	  console.log("The 'googleyolo' object is ready for use");
-	  
-	  const retrievePromise = googleyolo.retrieve({
+const CLIENT_ID = "916238640308-74p27e69d08ni6kia7pjuil408tlehk5.apps.googleusercontent.com";
+const SUPPORTED_METHOD = {
 		  supportedAuthMethods: [
-		    "https://accounts.google.com",
-		    "googleyolo://id-and-password"
-		  ],
-		  supportedIdTokenProviders: [
-		    {
-		      uri: "https://accounts.google.com",
-		      clientId: "916238640308-1t707vvo70jg4c1gjc0sncsvhtjtht0a.apps.googleusercontent.com"
-		    }
-		  ]
-		});
+			    "https://accounts.google.com",
+				"googleyolo://id-and-password"
+			  ],
+			  supportedIdTokenProviders: [
+			    {
+			      uri: "https://accounts.google.com",
+			      clientId: CLIENT_ID
+			    }
+			  ]
+			};
 
-	  retrievePromise.then((credential) => {
-		  if (credential.password) {
-		    // An ID (usually email address) and password credential was retrieved.
-		    // Sign in to your backend using the password.
-		    console.log(credential.id, credential.password);
-		  } else {
-		    // A Google Account is retrieved. Since Google supports ID token responses,
-		    // you can use the token to sign in instead of initiating the Google sign-in
-		    // flow.
-		    console.log(credential.idToken);
-		  }
-		}, (error) => {
-		  // Credentials could not be retrieved. In general, if the user does not
-		  // need to be signed in to use the page, you can just fail silently; or,
-		  // you can also examine the error object to handle specific error cases.
 
-		  // If retrieval failed because there were no credentials available, and
-		  // signing in might be useful or is required to proceed from this page,
-		  // you can call `hint()` to prompt the user to select an account to sign
-		  // in or sign up with.
-		//  if (error.type === 'noCredentialsAvailable') {
-		//    googleyolo.hint(...).then(...);
-		//  }
-			console.log(error);
-		});
+//present one tap login
+showHint=()=>{
+	googleyolo.hint(SUPPORTED_METHOD)
+		.then((credential) => {
+			  if (credential.idToken) {
+				    // Send the token to your auth backend.
+				    let trucToken = credential.idToken.substring(0, 10) + '...';
+				    log(`received token: ${trucToken} - ${JSON.stringify(credential.idToken)}`);
+				    console.log('Full token: '+credential.idToken);
+				    log('performing oAuth server side validation');
+				    performOAuth(credential.idToken);
+				  }
+				})
+		.catch((error) => {
+				  log(`received err: ${JSON.stringify(error)} `);
+				});
+	
+}
 
-	  
-	};
+//try to automaticall retrive the credentials on load (as soon as googleYolo is loaded)
+	window.onGoogleYoloLoad = (googleyolo) => {
+		  // The 'googleyolo' object is ready for use.
+		  log("The 'googleyolo' object is ready for use");
+		  
+		  googleyolo.retrieve(SUPPORTED_METHOD)
+		  .then((credential) => {
+			  if (credential.password) {
+			    // An ID (usually email address) and password credential was retrieved.
+			    // Sign in to your backend using the password.
+				  log(`Received id: ${credential.id} and password: ${credential.password}`);
+			  } else {
+			    // A Google Account is retrieved. Since Google supports ID token responses,
+			    // you can use the token to sign in instead of initiating the Google sign-in
+			    // flow.
+			    let trucToken = credential.idToken.substring(0, 10) + '...';
+			    log(`Received Token: ${trucToken}`);
+			    console.log('Full token: '+credential.idToken);
+			    performOAuth(credential.idToken);//validate the token
+			  }
+			})
+			.catch ((error) => {
+				  // Credentials could not be retrieved. In general, if the user does not
+				  // need to be signed in to use the page, you can just fail silently; or,
+				  // you can also examine the error object to handle specific error cases.
+
+				  // If retrieval failed because there were no credentials available, and
+				  // signing in might be useful or is required to proceed from this page,
+				  // you can call `hint()` to prompt the user to select an account to sign
+				  // in or sign up with.
+				//  if (error.type === 'noCredentialsAvailable') {
+				//    googleyolo.hint(...).then(...);
+				//  }
+				  
+					log(`received err: ${JSON.stringify(error)} , Using hint as a fallback`);
+					showHint();
+				});
+
+		  
+		};
+
+		log = (logMsg) => {
+			document.getElementById("consoleLog").innerHTML = '<br><br><span>'+ logMsg+'</span>' + document.getElementById("consoleLog").innerHTML ;
+			console.log(logMsg);
+		}
+
+performOAuth = (token) => {
+	
+	var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	   		 	var resJ = JSON.parse(this.responseText);
+		      if(resJ.emailVerified){//oAuth successful 
+	  			console.log(JSON.stringify(resJ));
+	  			document.getElementById("profileTitle").innerHTML = `${resJ.name} (${resJ.email})`;
+	  			document.getElementById("profileImage").src = resJ.picture;
+	  		}else{
+	  			log('Unverified user');
+	  		}
+	    }
+	  };
+	  xhttp.open("POST", "/onetapauth", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  var encodedKey = encodeURIComponent('token');
+		var encodedValue = encodeURIComponent(token);
+	  xhttp.send(encodedKey + "=" + encodedValue);
+	
+	
+	/*
+	
+	//let formData = new FormData();
+	//formData.append('token', token);
+	
+	let formBody = [];
+     var encodedKey = encodeURIComponent('token');
+	var encodedValue = encodeURIComponent(token);
+	formBody.push(encodedKey + "=" + encodedValue);
+
+	fetch("/onetapauth",
+	    {
+	        body: formData,
+	        method: "post"
+	    })
+	    .then((res) => {return res.json();})
+	    .then((resJ) => {
+	    		if(resJ.emailVerified){//oAuth successful 
+	    			log(JSON.stringify(resJ));
+	    			document.getElementById("profileTitle").innerHTML = `${resJ.name} (${resJ.email})`;
+	    			document.getElementById("profileImage").src = resJ.picture;
+	    		}else{
+	    			log('Unverified user');
+	    		}
+	    })
+	    .catch((err) => {
+	    		log(err);
+	    });
+	*/
+	
+	
+}
 
 </script>
 </head>
 <body>
+<div align="center">
+<img alt="Profile" src="images/profile.png" id="profileImage">
+<br>
+<span id="profileTitle">John Doe (john@doe.com)</span>
+</div>
+<p>
+This page will try to automatically Sign-In the user, using <i>googleyolo.retrieve</i>, if that fails then <i>googleyolo.hint</i> will be called for one-tap sign in.
+Refer <a href="https://developers.google.com/identity/one-tap/web/overview">official documentation</a> for more details.
+ <a href="https://github.com/prash-mi/mweb-demos/tree/master/src/main/webapp/one-tap-signin">Source Code</a> 
+</p>
+<p>
+Click <a href="javascript:showHint()">here</a> for calling <i>googleyolo.hint</i> explicitly.
+</p>
 
+<label><h3>Console Output:</h2></label>
+	<div style="border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;">
+	<p id="consoleLog"></p>
+	</div>
 </body>
 </html>

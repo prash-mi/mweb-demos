@@ -37,14 +37,37 @@
       <tr>
       <td><a href='payment-request/'>Payment Request Demo</a></td>
     </tr>
-    <tr><td><a href='payment-request-tez/'>Payment Request Demo with Tez (as single payment method)</a></td></tr>
-     <tr><td><a href='payment-request-pwa/'>Payment Request Demo - PWA</a></td></tr>
-     <tr><td><a href='payment-request-pwa-canmakepayment/'>Payment Request Demo - PWA (With canMakePayment method)</a></td></tr>
-      <tr><td><a href='payment-request-tez-pwa/'>Payment Request Demo with Tez (as single payment method - PWA)</a></td></tr>
-         <tr><td><a href='/amp/payment-request/'>Payment Request Demo with Tez (AMP - Work in progress!)</a></td></tr>
-              <tr><td><a href='pwa-in-15/'>PWA in 15 mins code lab</a></td></tr>
-            <tr><td><a href='amp-as-pwa/index.html'>Sample AMP as PWA News Website</a></td></tr>  
-  </table>
+		<tr>
+			<td><a href='payment-request-tez/'>Payment Request Demo with
+					Tez (as single payment method)</a></td>
+		</tr>
+		<tr>
+			<td><a href='payment-request-pwa/'>Payment Request Demo -
+					PWA</a></td>
+		</tr>
+		<tr>
+			<td><a href='payment-request-pwa-canmakepayment/'>Payment
+					Request Demo - PWA (With canMakePayment method)</a></td>
+		</tr>
+		<tr>
+			<td><a href='payment-request-tez-pwa/'>Payment Request Demo
+					with Tez (as single payment method - PWA)</a></td>
+		</tr>
+		<tr>
+			<td><a href='/amp/payment-request/'>Payment Request Demo
+					with Tez (AMP - Work in progress!)</a></td>
+		</tr>
+		<tr>
+			<td><a href='pwa-in-15/'>PWA in 15 mins code lab</a></td>
+		</tr>
+		<tr>
+			<td><a href='amp-as-pwa/index.html'>Sample AMP as PWA News
+					Website</a></td>
+		</tr>
+		<tr>
+			<td><a href='one-tap-signin/index.html'>one-tap-signin/a></td>
+		</tr>
+	</table>
 
 </body>
 </html>
