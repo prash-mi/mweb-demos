@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <script src="https://smartlock.google.com/client"></script>
 <meta charset="UTF-8">
 <title>OneTap Sign-in Demo</title>
@@ -26,9 +27,9 @@ showHint=()=>{
 		.then((credential) => {
 			  if (credential.idToken) {
 				    // Send the token to your auth backend.
-				    let trucToken = credential.idToken.substring(0, 10) + '...';
-				    log(`received token: ${trucToken} - ${JSON.stringify(credential.idToken)}`);
-				    console.log('Full token: '+credential.idToken);
+				    //let trucToken = credential.idToken.substring(0, 10) + '...';
+				    log(`received token: ${credential.idToken} - ${JSON.stringify(credential.idToken)}`);
+				   // console.log('Full token: '+credential.idToken);
 				    log('performing oAuth server side validation');
 				    performOAuth(credential.idToken);
 				  }
@@ -54,9 +55,9 @@ showHint=()=>{
 			    // A Google Account is retrieved. Since Google supports ID token responses,
 			    // you can use the token to sign in instead of initiating the Google sign-in
 			    // flow.
-			    let trucToken = credential.idToken.substring(0, 10) + '...';
-			    log(`Received Token: ${trucToken}`);
-			    console.log('Full token: '+credential.idToken);
+			 //   let trucToken = credential.idToken.substring(0, 10) + '...';
+			    log(`Received Token: ${credential.idToken}`);
+			   // console.log('Full token: '+credential.idToken);
 			    performOAuth(credential.idToken);//validate the token
 			  }
 			})
@@ -90,6 +91,7 @@ performOAuth = (token) => {
 	var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
+	    			log(`oAuth server response: ${this.responseText}`);
 	   		 	var resJ = JSON.parse(this.responseText);
 		      if(resJ.emailVerified){//oAuth successful 
 	  			console.log(JSON.stringify(resJ));
