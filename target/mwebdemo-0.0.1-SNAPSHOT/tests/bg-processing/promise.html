@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BG JS Test</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    
+    <script type="text/javascript">
+
+    let processingPromise = new Promise((resolve, reject) => {
+    		let timeInMil = 5000;
+		let start = new Date();
+		console.log('Blocking thread @ ' + new Date());
+		while (true) {
+			let cur = new Date();
+			if ((cur - start) >= timeInMil) {
+				break;
+			}
+		}
+		console.log('Unblocking thread @ ' + new Date());
+		
+		resolve('Blocking operation completed');
+    	
+    });
+		
+function blockingProcess(timeInMil) {
+						processingPromise.then((res) => {
+							console.log(res);
+						});
+						console.log('blockingProcess completed');
+					}
+				</script>
+    
+</head>
+<body onload="javascript:blockingProcess(5000)">
+
+<p>Blocking with Promise</p>
+<img alt="chrome" src="image/img.jpg">
+<div id="prnt"></div>
+</body>
+</html>

@@ -68,7 +68,13 @@
 			<td><a href='one-tap-signin/index.html'>one-tap-signin</a></td>
 		</tr>
 		<tr>
-			<td><a href='https://mweb-demos.appspot.com/tests/questions-tags/'>Test</a></td>
+			<td><a href='https://mweb-demos.appspot.com/tests/questions-tags/'>Question Tags</a></td>
+		</tr>
+		<tr>
+			<td><a href='https://mweb-demos.appspot.com/offline-ux/'>Offline-ux with workbox without app-shell</a></td>
+		</tr>
+		<tr>
+			<td><a href='https://mweb-demos.appspot.com/webshare-api/'>Webshare-API Demo</a></td>
 		</tr>
 	</table>
 

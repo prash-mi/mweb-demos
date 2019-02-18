@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BG JS Test</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    
+    <script type="text/javascript">
+
+		
+					function blockingProcess(timeInMil) {
+						if(typeof(Worker) !== "undefined") {
+					        if(typeof(w) == "undefined") {
+					            w = new Worker("worker.js");
+					        }
+					        w.onmessage = function(event) {
+					        	console.log(event.data);
+					        };
+					    } else {
+					    	console.log('Sorry! No Web Worker support.');
+					    }
+
+					}
+				</script>
+    
+</head>
+<body onload="javascript:blockingProcess(5000)">
+
+<p>Worker Blocking</p>
+<img alt="chrome" src="image/img.jpg">
+
+</body>
+</html>

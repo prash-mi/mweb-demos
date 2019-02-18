@@ -1,0 +1,21 @@
+{
+    "short_name": "Rey1K Rocks",
+    "name": "Rey1K Rocks Website",
+    "start_url": "index.html",
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "background_color": "#D6DBDF",
+    "theme_color": "#D6DBDF",
+    "orientation": "portrait",
+    "display": "standalone"
+}

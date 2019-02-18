@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.demos.mwebdemo.TestServletTest" time="0.342" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.demos.mwebdemo.TestServletTest" time="0.335" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="25.144-b01"/>
-    <property name="user.country.format" value="IN"/>
+    <property name="user.country.format" value="JP"/>
     <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="maven.multiModuleProjectDirectory" value="/Users/prasmish/eclipse-jee-workspace/mwebdemo"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.13.6"/>
+    <property name="os.version" value="10.14.3"/>
     <property name="library.jansi.path" value="/usr/local/apache-maven-3.5.2/lib/jansi-native"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="user.home" value="/Users/prasmish"/>
@@ -64,6 +64,6 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="helloInfoTest" classname="com.demos.mwebdemo.TestServletTest" time="0.206"/>
+  <testcase name="helloInfoTest" classname="com.demos.mwebdemo.TestServletTest" time="0.208"/>
   <testcase name="doGetWritesResponse" classname="com.demos.mwebdemo.TestServletTest" time="0.005"/>
 </testsuite>
