@@ -45,7 +45,7 @@ handlers:
   script: unused
   login: optional
   secure: always
-- url: /onetapauth
+- url: /\.well-known/assetlinks\.json
   script: unused
   login: optional
   secure: always
@@ -53,3 +53,7 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: /onetapauth
+  script: unused
+  login: optional
+  secure: always

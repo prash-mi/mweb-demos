@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.innovativedemoapps.twa.sample",
+               "sha256_cert_fingerprints": ["B3:CC:49:A4:EF:B9:12:BD:DB:D5:B9:62:AE:CF:E7:FE:91:45:3E:7C:FA:D2:55:A2:65:0D:9A:05:25:57:15:98"] }
+}]

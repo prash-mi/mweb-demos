@@ -76,6 +76,12 @@
 		<tr>
 			<td><a href='https://mweb-demos.appspot.com/webshare-api/'>Webshare-API Demo</a></td>
 		</tr>
+		
+		<tr>
+			<td><a href='https://mweb-demos.appspot.com/twa/'>Trusted Web Activity</a> | 
+			<a href='https://play.google.com/store/apps/details?id=com.innovativedemoapps.twa.sample&hl=en'>TWA Sample @ Play Store</a></td>
+		</tr>
+		
 	</table>
 
 </body>
