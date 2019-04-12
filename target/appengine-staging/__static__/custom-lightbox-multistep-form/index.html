@@ -1,0 +1,116 @@
+
+<!doctype html>
+<html ⚡>
+<head>
+  <meta charset="utf-8">
+  <title>Multi Step Form</title>
+<link rel="canonical" href="https://mweb-demos.appspot.com/custom-lightbox-multistep-form/">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <!-- You can combine the lightbox component with `amp-bind`. -->
+  <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+  <style amp-custom>
+    .lightbox {
+      background: rgba(0,0,0,.8);
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .lightbox-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Multi Step form Submission</h1>
+
+
+<amp-img src="car.png" alt="Dummy Car" height="195" width="258"></amp-img>
+<br/>
+  <button on="tap:myLightbox.show">
+    Open Lightbox
+  </button>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  <div id="myLightbox" class="lightbox">
+    <div class="lightbox-content">
+
+      
+      <form class="sample-form" method="post"
+    action-xhr="https://mweb-demos.appspot.com/dummyform"
+    target="_top">
+
+
+<div id="form1">
+  <h2>Step 1</h2>
+  <input type="text"
+       name="name"
+       id="name"
+       placeholder="Name..."
+       tabindex="1"
+       >
+       <br/>
+  <input type="text"
+       name="text"
+       placeholder="Email..."
+        tabindex="2"
+       >
+<br/>
+       <button on="tap:form1.hide,form2.show;"  >Next</button>
+       <button on="tap:myLightbox.hide">
+        Close Lightbox
+      </button>
+       </div>
+
+<div id="form2" hidden>
+  <h2>Step 2</h2>
+       <input type="text"
+            name="Address"
+            placeholder="Address"
+             tabindex="4"
+            >
+            <br/>
+       <input type="text"
+            name="phone"
+            placeholder="Phone..."
+             tabindex="5"
+            >
+            <br/>
+            <input type="submit"  value="submit" on="tap:form2.hide"  tabindex="6" role="button">
+            <button on="tap:myLightbox.hide">
+        Close Lightbox
+      </button>
+
+</div>
+
+
+  <div submit-success>
+  <template type="amp-mustache">
+    Response from the server: {{status}}
+  </template>
+  </div>
+  <div submit-error>
+  <template type="amp-mustache">
+  Opps! Error Submitting the form!!!
+  </template>
+  </div>
+  </form>
+
+     
+    </div>
+  </div>
+</body>
+</html>

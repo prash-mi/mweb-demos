@@ -41,11 +41,11 @@ handlers:
   script: unused
   login: optional
   secure: always
-- url: /formservlet
+- url: /dummyform
   script: unused
   login: optional
   secure: always
-- url: /\.well-known/assetlinks\.json
+- url: /formservlet
   script: unused
   login: optional
   secure: always
@@ -53,6 +53,14 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: /\.well-known/amphtml/apikey\.pub
+  script: unused
+  login: optional
+  secure: always
+- url: /\.well-known/assetlinks\.json
+  script: unused
+  login: optional
+  secure: always
 - url: /onetapauth
   script: unused
   login: optional

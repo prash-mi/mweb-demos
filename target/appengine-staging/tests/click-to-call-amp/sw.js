@@ -20,15 +20,11 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.3.0/workbox
  */
 self.__precacheManifest = [
   {
-    "url": "images/got_mom.gif",
-    "revision": "b4baa6d6b9894b020aed1ab92c0985fa"
-  },
-  {
-    "url": "images/Target_Achieved_Wow.gif",
-    "revision": "11176471c144f42c315612b9a7451d24"
+    "url": "images/news.png",
+    "revision": "ab90df5f7b08e067a5d86f407a2c25ec"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/^https:\/\/mweb-demos.appspot.com\/we-rock\/index.html/, workbox.strategies.networkFirst({ cacheName: "amp-as-pwa-cache", plugins: [] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/mweb-demos.appspot.com\/amp-as-pwa\/index.html/, workbox.strategies.networkFirst({ cacheName: "amp-as-pwa-cache", plugins: [] }), 'GET');

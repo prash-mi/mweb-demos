@@ -1,6 +1,6 @@
 {
-    "short_name": "Rey1K Rocks",
-    "name": "Rey1K Rocks Website",
+    "short_name": "AMP as PWA",
+    "name": "Sample AMP as PWA News Website",
     "start_url": "index.html",
     "icons": [
         {
