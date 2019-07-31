@@ -42,7 +42,6 @@
   	if(popupWindow && !popupWindow.closed)
   	  	popupWindow.focus();
   	}
-  
 </script>
 
 
@@ -54,6 +53,7 @@
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
 <title>Web-Share API demo</title>
 
+<!-- Styling Related Stuff -->
 <script type="text/javascript" src="script/app.js"></script>
 <style type="text/css">
 .small-button {
@@ -176,12 +176,101 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
 </style>
 </head>
 <body onload="javascript:pageView();registerSW()" onFocus="javascript:parent_disable();" onclick="javascript:parent_disable();">
 
 	<h1>SMS Retriever API demo</h1>
-<a href="javascript:child_open()">Click here for OTP Verification</a>
+<a href="javascript:child_open()">OTP Verification over Pop Up</a>
+
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+	    <form style="color:white" action="sms_done.html">
+	      <h1>Verify phone</h1>
+	      <div class="waiting">
+	        <p>We have sent a SMS to your phone!</p>
+	        <p>Please wait.</p>
+	        <p><a href="javascript: alert('tbd')">Edit number</a></p>
+	        <p>
+	          <input is="sms-receiver" 
+	                 name="otp" 
+	                 regex="\s([A-Za-z0-9]{6})\." 
+	                 autocomplete="one-time-code" 
+	                 placeholder="Code (6 digits)" 
+	                 required/>
+	        </p>
+	        <p><input type="submit" value="Send code"></p>
+	      </div>
+	    </form>
+  </div>
+</div>
+
+<p>
+<span style="color:blue; text-decoration:underline; cursor:pointer" onclick="openNav()">OTP Verification over Overlay</span>
+</p>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+  log('Will try to receive sms now!');
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
 	<p>
 		This page shows Web-Share API demo. The payment options can be customised in the Payment
 		Settings<a href="#" onclick="javascript:togglePayment()">
@@ -232,5 +321,6 @@ img {
 	</div>
 
 	<div id="snackbar"></div>
+	<script async src="sms-receiver.js"></script>
 </body>
 </html>
