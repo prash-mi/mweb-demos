@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#33C3F0"/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112374941-1');
+ 
+  function pageView(){
+	  ga('send', 'pageview', location.pathname);
+	  
+  }
+  
+  function registerSW(){
+	  if ('serviceWorker' in navigator) {
+		    navigator.serviceWorker
+		             .register('./serviceworker.js')
+		             .then(function() { log('Service Worker Registered'); })
+		             .catch((e)=>{log('Error registering SW: '+e);});
+		  }else{
+			  log('Service worker isn\'t supported');
+		  }
+  }
+
+  var popupWindow=null;
+
+  function child_open()
+  	{ 
+		if(popupWindow && !popupWindow.closed)
+		   popupWindow.focus();
+		else
+		   popupWindow =window.open('sms.html',"_blank","directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes,width=640, 		height=360,top=200,left=200");
+	  	
+  	}
+  function parent_disable() {
+  	if(popupWindow && !popupWindow.closed)
+  	  	popupWindow.focus();
+  	}
+  
+</script>
+
+
+<meta charset="UTF-8">
+<meta name="description" content="WebShare API Demo"/>
+<meta name="viewport"
+	content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
+<title>Web-Share API demo</title>
+
+<script type="text/javascript" src="script/app.js"></script>
+<style type="text/css">
+.small-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	margin-bottom: 10px;
+	right: 10px;
+}
+
+.main-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	border-color: #33C3F0;
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+p {
+	margin-top: 0;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+div {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+
+body {
+	max-width: 600px;
+	margin: 10px;
+	float: none !important;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body onload="javascript:pageView();registerSW()" onFocus="javascript:parent_disable();" onclick="javascript:parent_disable();">
+
+	<h1>SMS Retriever API demo</h1>
+<a href="javascript:child_open()">Click here for OTP Verification</a>
+	<p>
+		This page shows Web-Share API demo. The payment options can be customised in the Payment
+		Settings<a href="#" onclick="javascript:togglePayment()">
+			show/hide</a>. The payment informations is not saved or transmitted to
+		the server in this demo.
+	</p>
+
+	<div id="customizePayment"
+		style="display: none; background-color: #F2F2F2;">
+
+		<fieldset>
+			<legend>Payment Settings</legend>
+			<fieldset>
+				<legend>Basic cards</legend>
+				<input type="checkbox" id="mastercard" value="mastercard" checked />mastercard
+				<br /> <input type="checkbox" id="visa" value="visa" checked />visa<br />
+				<input type="checkbox" id="amex" value="amex" />amex<br /> <input
+					type="checkbox" id="diners" value="diners" />diners<br /> <input
+					type="checkbox" id="discover" value="discover" />discover<br /> <input
+					type="checkbox" id="jcb" value="jcb" />jcb<br /> <input
+					type="checkbox" id="unionpay" value="unionpay" />unionpay<br /> <input
+					type="checkbox" id="mir" value="mir" />mir<br />
+			</fieldset>
+		</fieldset>
+
+		<button class="small-button" onclick="javascript:savePaymentOptions()">Save</button>
+
+	</div>
+
+<label><h2>Sample Transaction: </h2></label>
+	<div style=" border: 3px solid #848484;margin-top: 20px;">
+		<ul style="list-style-type:none">
+		<li><h2>Google Pixel 2 (Just Black, 64 GB)  (4 GB RAM) <img alt="share" width="25px" height="25px" src="images/share.png" onclick="javascript:share('pixel2')"></h2></li>
+			<li><img src="images/pixel2.jpg" alt=""></li>
+			<li><span>Original price Rs 61,000/- </span><br>
+			    <span><b>Offer price 45,750/- @ 25% discount</b></span><br>
+			</li>
+			
+			<li><button class="main-button" onclick="javascript:pay()">Buy
+					now</button>&nbsp;<button class="main-button" onclick="javascript:share('pixel2')">Share</button></li>
+		</ul>
+
+	</div>
+
+	<label><h2>Console Output:</h2></label>
+	<div style="border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;">
+	<p id="consoleLog"></p>
+	</div>
+
+	<div id="snackbar"></div>
+</body>
+</html>

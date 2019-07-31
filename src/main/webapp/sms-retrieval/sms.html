@@ -1,0 +1,102 @@
+
+<html>
+  <head>
+	<style type="text/css">
+		@font-face {
+		  font-family: 'Droid Serif';
+		  font-style: italic;
+		  font-weight: 400;
+		  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(//fonts.gstatic.com/s/droidserif/v9/tDbK2oqRg1oM3QBjjcaDkOr4nAfcGw.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Droid Serif';
+		  font-style: normal;
+		  font-weight: 400;
+		  src: local('Droid Serif Regular'), local('DroidSerif-Regular'), url(//fonts.gstatic.com/s/droidserif/v9/tDbI2oqRg1oM3QBjjcaDkOr9rAA.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Droid Serif';
+		  font-style: normal;
+		  font-weight: 700;
+		  src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(//fonts.gstatic.com/s/droidserif/v9/tDbV2oqRg1oM3QBjjcaDkOJGiRD7OwQ.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Source Sans Pro';
+		  font-style: italic;
+		  font-weight: 400;
+		  src: local('Source Sans Pro Italic'), local('SourceSansPro-Italic'), url(//fonts.gstatic.com/s/sourcesanspro/v11/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDc.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Source Sans Pro';
+		  font-style: normal;
+		  font-weight: 400;
+		  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(//fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7g.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Source Sans Pro';
+		  font-style: normal;
+		  font-weight: 600;
+		  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(//fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdr.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Source Sans Pro';
+		  font-style: normal;
+		  font-weight: 700;
+		  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(//fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdr.ttf) format('truetype');
+		}
+		@font-face {
+		  font-family: 'Source Sans Pro';
+		  font-style: normal;
+		  font-weight: 900;
+		  src: local('Source Sans Pro Black'), local('SourceSansPro-Black'), url(//fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlxdr.ttf) format('truetype');
+		}
+		
+		body {
+		  font-family: "Droid Serif", Georgia, serif;
+		  font-size: 2.5em;
+		  padding: 3em;
+		}
+		p {
+		  color: #757575;
+		}
+		input {
+		  width: 100%;
+		  border: 2px solid #0D47A1;
+		  padding: 0.5em;
+		  font-family: "Droid Serif", Georgia, serif;
+		  font-size: 1em;
+		}
+		input[type = "submit"] {
+		  background-color: #2979FF;
+		  color: white;
+		  font-weight: bold;
+		}
+		body[done] .waiting {
+		  display: none;
+		}
+		body:not([done]) .done {
+		  display: none;
+		}
+	</style>
+    <script src="sms-receiver.js"></script>
+  </head>
+  <body>
+    <form action="sms_done.html">
+      <h1>Verify phone</h1>
+      <div class="waiting">
+        <p>We have sent a SMS to your phone!</p>
+        <p>Please wait.</p>
+        <p><a href="javascript: alert('tbd')">Edit number</a></p>
+        <p>
+          <input is="sms-receiver" 
+                 name="otp" 
+                 regex="\s([A-Za-z0-9]{6})\." 
+                 autocomplete="one-time-code" 
+                 placeholder="Code (6 digits)" 
+                 required/>
+        </p>
+        <p><input type="submit" value="Send code"></p>
+      </div>
+    </form>
+  </body>
+<html>
