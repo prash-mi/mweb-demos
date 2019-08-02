@@ -84,6 +84,10 @@
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/custom-lightbox-multistep-form/'>custom-lightbox-multistep-form in AMP</a></td>
 		</tr>
+		</tr>
+			<tr>
+			<td><a href='https://mweb-demos.appspot.com/sms-retrieval/'>sms-retrieval API Demo</a></td>
+		</tr>
 		
 	</table>
 

@@ -51,7 +51,7 @@
 	content="width=device-width,minimum-scale=1,initial-scale=1">
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
-<title>Web-Share API demo</title>
+<title>SMS Retrieval API Demo</title>
 
 <!-- Styling Related Stuff -->
 <script type="text/javascript" src="script/app.js"></script>
@@ -257,13 +257,13 @@ img {
 </div>
 
 <p>
-<span style="color:blue; text-decoration:underline; cursor:pointer" onclick="openNav()">OTP Verification over Overlay</span>
+<span style="color:blue; text-decoration:underline; cursor:pointer" onclick="openNav(); receiveSMS();">OTP Verification over Overlay</span>
 </p>
 
 <script>
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
-  log('Will try to receive sms now!');
+  //log('Will try to receive sms now!');
 }
 
 function closeNav() {

@@ -26,28 +26,31 @@
  *  API is not available.
  *
  */
-customElements.define("sms-receiver",
-  class extends HTMLInputElement {
-    connectedCallback() {
-      this.receive();
-    }
-    async receive() {
-        try {
-            let {content} = await navigator.sms.receive();
-            console.log("Received an SMS message!");
-            console.log(content);
-            let regex = this.getAttribute("regex");
-            let code = new RegExp(regex).exec(content);
-            if (!code) {
-                console.log("SMS message doesn't match regex");
-                 return;
-            }
-            this.value = code[1];
-            this.form.submit();
-        } catch (e) {
-            console.log(e);
+//customElements.define("sms-receiver",
+//  class extends HTMLInputElement {
+//    connectedCallback() {
+//      this.receive();
+//    }
+// 
+//  }, {
+//    extends: "input"
+//});
+
+async function receiveSMS() {
+    try {
+    		log("Calling navigator.sms.receive()");
+        let {content} = await navigator.sms.receive();
+        log("Received an SMS message!");
+        log(content);
+        let regex = this.getAttribute("regex");
+        let code = new RegExp(regex).exec(content);
+        if (!code) {
+             log("SMS message doesn't match regex");
+             return;
         }
+        this.value = code[1];
+        this.form.submit();
+    } catch (e) {
+        log(e);
     }
-  }, {
-    extends: "input"
-});
+}
