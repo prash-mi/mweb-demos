@@ -51,7 +51,7 @@
 	content="width=device-width,minimum-scale=1,initial-scale=1">
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
-<title>Web-Share API demo</title>
+<title>SMS Retrieval API Demo</title>
 
 <!-- Styling Related Stuff -->
 <script type="text/javascript" src="script/app.js"></script>
@@ -236,14 +236,14 @@ img {
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
-	    <form style="color:white" action="sms_done.html">
+	    <form style="color:white" action="sms_done.html" id="smsform">
 	      <h1>Verify phone</h1>
 	      <div class="waiting">
 	        <p>We have sent a SMS to your phone!</p>
 	        <p>Please wait.</p>
 	        <p><a href="javascript: alert('tbd')">Edit number</a></p>
 	        <p>
-	          <input is="sms-receiver" 
+	          <input id="smsbox" is="sms-receiver" 
 	                 name="otp" 
 	                 regex="\s([A-Za-z0-9]{6})\." 
 	                 autocomplete="one-time-code" 
@@ -257,13 +257,13 @@ img {
 </div>
 
 <p>
-<span style="color:blue; text-decoration:underline; cursor:pointer" onclick="openNav()">OTP Verification over Overlay</span>
+<span style="color:blue; text-decoration:underline; cursor:pointer" onclick="openNav(); receiveSMS();">OTP Verification over Overlay</span>
 </p>
 
 <script>
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
-  log('Will try to receive sms now!');
+  //log('Will try to receive sms now!');
 }
 
 function closeNav() {

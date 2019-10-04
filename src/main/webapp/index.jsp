@@ -88,7 +88,20 @@
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/sms-retrieval/'>sms-retrieval API Demo</a></td>
 		</tr>
+			</tr>
+			<tr>
+			<td><a href='https://mweb-demos.appspot.com/geo/'>Geo enabled streaming</a></td>
+		</tr>
 		
+			</tr>
+			<tr>
+			<td><a href='https://mweb-demos.appspot.com/get-related-apps/'>getInstalledRelatedApps API Demo</a></td>
+		</tr>
+		
+			</tr>
+			<tr>
+			<td><a href='https://mweb-demos.appspot.com/periodic-background-sync/'>periodic background sync API Demo</a></td>
+		</tr>
 	</table>
 
 </body>

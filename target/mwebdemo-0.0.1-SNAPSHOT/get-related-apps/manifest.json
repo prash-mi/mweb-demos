@@ -1,0 +1,21 @@
+{
+    "short_name": "getInstalledRelatedApps API Demo",
+    "name": "getInstalledRelatedApps API Demo",
+    "start_url": "index.html",
+    "icons": [
+        {
+            "src": "images/icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "background_color": "#33C3F0",
+    "theme_color": "#33C3F0",
+    "orientation": "portrait",
+    "display": "standalone"
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#33C3F0"/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112374941-1');
+ 
+  function pageView(){
+	  ga('send', 'pageview', location.pathname);
+	  
+  }
+  
+  function registerSW(){
+	  if ('serviceWorker' in navigator) {
+		    navigator.serviceWorker
+		             .register('./serviceworker.js')
+		             .then(function() { log('Service Worker Registered'); })
+		             .catch((e)=>{log('Error registering SW: '+e);});
+		  }else{
+			  log('Service worker isn\'t supported');
+		  }
+  }
+  
+  
+  const log = (logMsg) =>
+  {
+		document.getElementById("consoleLog").innerHTML = '<br><br><span>'+ logMsg+'</span>' + document.getElementById("consoleLog").innerHTML;
+		console.log(logMsg);
+  }
+  
+  
+  const registerPBS = async () => {
+	  log('calling navigator.permissions.query');
+	  const status = await navigator.permissions.query({
+		  name: 'periodic-background-sync',
+		});
+		if (status.state === 'granted') {
+			log('Permission granted');
+			
+		} else {
+			log('Permission denied');
+			return;
+		}
+		
+		const registration = await navigator.serviceWorker.ready;
+		if ('periodicSync' in registration) {
+		  try {
+		    registration.periodicSync.register('content-sync', {
+			//sync every minute
+			minInterval:  60 * 1000,
+		    });
+		    log('Registered PBS');
+		  } catch (error) {
+			  log('Error registering PBS: '+error);
+		  }
+		}
+	  
+  }
+  
+  const unRegisterPBS = async () => {
+
+	  const registration = await navigator.serviceWorker.ready;
+	  if ('periodicSync' in registration) {
+	    registration.periodicSync.unregister('content-sync');
+	    log('PBS un-registered');
+	  }else{
+		  log('Did not find a PBS to un-register!');
+	  }
+
+  }
+  
+  const bgSync = () => {
+	  fetch('https://mweb-demos.appspot.com/periodic-background-sync/update.json')
+	  .then(response => log(response.json()))
+	  .catch(err => log('Error getting updates: '+err));
+  }
+  
+
+  
+</script>
+
+
+<meta charset="UTF-8">
+<meta http-equiv="origin-trial" content="Aj+LFKgH++bPLFhAuyokZPwzYHEu2rf9roH/iHoKaNr5m9XeJD51qCrbsz7ZlG4YJa/Jxfsc1EbGxsqIDjw6hAMAAABmeyJvcmlnaW4iOiJodHRwczovL213ZWItZGVtb3MuYXBwc3BvdC5jb206NDQzIiwiZmVhdHVyZSI6IlBlcmlvZGljQmFja2dyb3VuZFN5bmMiLCJleHBpcnkiOjE1NzM3MTAxMjF9">
+
+<meta name="description" content="periodic background sync API Demo"/>
+<meta name="viewport"
+	content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
+<title>Periodic background sync API Demo</title>
+
+<style type="text/css">
+.small-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	margin-bottom: 10px;
+	right: 10px;
+}
+
+.main-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	border-color: #33C3F0;
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+p {
+	margin-top: 0;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+div {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+
+body {
+	max-width: 600px;
+	margin: 10px;
+	float: none !important;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body onload="javascript:pageView();registerSW()">
+
+	<h1>Periodic background sync API Demo</h1>
+
+	<p>
+		Periodic background sync API Demo <a href="https://developers.google.com/web/updates/2019/08/periodic-background-sync"> [Details]</a>. 
+	</p>
+
+
+<p>
+		 <a href="#" onclick="registerPBS()"> Click here to register periodic background sync.</a>
+	</p>
+	
+	<p>
+		 <a href="#" onclick="unRegisterPBS()"> Click here to un-register periodic background sync.</a>
+	</p>
+
+
+	<label><h2>Console Output:</h2></label>
+	<div style="border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;">
+	<p id="consoleLog"></p>
+	</div>
+
+	<div id="snackbar"></div>
+</body>
+</html>
