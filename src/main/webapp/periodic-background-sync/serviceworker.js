@@ -71,7 +71,7 @@ workbox.routing.registerRoute(/(.)*\/index.html/, async ({event}) => {
     });
 
 //PBS Event
-self.addEventListener('periodicsync', (event) => {
+self.addEventListener('content-sync', (event) => {
 		log('Syncing in background: '+event.tag);
 	    event.waitUntil(bgSync());
 	    log('Sync complete');

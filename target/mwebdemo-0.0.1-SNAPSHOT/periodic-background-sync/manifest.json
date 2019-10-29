@@ -1,6 +1,6 @@
 {
     "short_name": "periodic background sync API Demo",
-    "name": "periodic background sync API Demo",
+    "name": "PBS (eriodic background sync)",
     "start_url": "index.html",
     "icons": [
         {

@@ -1,3 +1,5 @@
+<!-- Re purposing the code @ https://uskay-portals-demo.glitch.me/ -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +7,12 @@
 <script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#33C3F0"/>
+
+<style type="text/css">
+
+
+</style>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -17,6 +25,11 @@
 	  
   }
   
+  const log = logMsg => {
+		document.getElementById("consoleLog").innerHTML = document.getElementById("consoleLog").innerHTML + '<br><br><span>'+ logMsg+'</span>';
+		console.log(logMsg);
+	}
+  
   function registerSW(){
 	  if ('serviceWorker' in navigator) {
 		    navigator.serviceWorker
@@ -27,25 +40,112 @@
 			  log('Service worker isn\'t supported');
 		  }
   }
-  
-//Event fires when coming back from TTT Archive
-  window.addEventListener('portalactivate', (evt) => {
-      this.returnFromEmbed(evt.adoptPredecessor());
-      log('portalactivate');
-  });
 
   
-  var portalRef;
-  var activatePortal = () => {
-	  
-	  portalRef = document.createElement('portal');
-	  portalRef.src = 'https://mweb-demos.appspot.com/webshare-api/';
-	  portalRef.activate();
-	  log('portals activated');
-	  
-  };
+  /////
   
-</script>
+  /*
+  
+      portal {
+        position:fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition:
+            transform 0.4s,
+            bottom 0.7s,
+            left 0.7s,
+            opacity 1.0s;
+        box-shadow: 0 0 20px 10px #999;
+        transform: scale(${initialScale});
+        bottom: calc(20px + 50% * ${initialScale} - 50%);
+        left: calc(20px + 50% * ${initialScale} - 50%);
+        z-index: 10000;
+    }
+  
+  */
+  
+  const addPreviewPortal = url => {
+    // Remove any exisiting portals
+    const existingPortal = document.querySelector('portal');
+    if (existingPortal) {
+        existingPortal.remove();
+    }
+
+    // Adding some styles with transitions
+    const style = document.createElement('style');
+    const initialScale = 0.4;
+    style.innerHTML = `
+    	 portal {
+        width:80%;
+        height: 80%;
+        overflow: scroll;
+        position: absolute;
+        border-radius: 3px;
+        top: 20%;
+        bottom:20%;
+        left:10%;
+        right:10%;
+        cursor: pointer;
+    
+
+        transition:
+            transform 0.4s,
+            bottom 0.2s,
+            left 0.2s,
+            opacity 1.0s;
+        transform: scale(0.8);
+        z-index: 10000;
+    
+    }
+    .portal-reveal {
+        transform: scale(1.0);
+        bottom: 0px;
+        left: 0px;
+    }
+    .fade-in {
+        opacity: 1.0;
+    }
+    `;
+    const portal = document.createElement('portal');
+    portal.src = url;
+    portal.addEventListener('click', evt => {
+        // Animate the portal once user interacts
+        portal.classList.add('portal-reveal');
+    });
+    portal.addEventListener('transitionend', evt => {
+        if (evt.propertyName == 'bottom') {
+            // Activate the portal once the transition has completed
+            portal.activate();
+        }
+    });
+    document.body.append(style, portal);
+
+    // Waiting for the page (portal host) to load.
+    // using setTimeout is a suboptimal way and it’s best to fade-in
+    // when receiving a load complete message from the portal
+    setTimeout(_ => portal.classList.add('fade-in'), 2000);
+
+// If portal is available init the app
+/*
+if ('HTMLPortalElement' in window) {
+        addPreviewPortal('https://google.com');
+}
+  
+*/
+  }
+  
+  const hidePortalPreview = _=>{
+	  const existingPortal = document.querySelector('portal');
+	    if (existingPortal) {
+	        existingPortal.remove();
+	        log('Hidden');
+	    } else{
+	      	log('Portal not available');
+	    }
+  }
+
+  </script>
 
 
 <meta charset="UTF-8">
@@ -56,7 +156,6 @@
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
 <title>Portal demo</title>
 
-<script type="text/javascript" src="script/app.js"></script>
 <style type="text/css">
 .small-button {
 	color: #FFF;
@@ -183,13 +282,15 @@ img {
 <body onload="javascript:pageView();registerSW()">
 
 	<h1>Portal demo</h1>
+	<p> This code re-purposes the sample code @ https://uskay-portals-demo.glitch.me to show back and forth navigation between a non-portal page and a portal </p>
+	<button onclick="javascript:hidePortalPreview()"> Hide Preview </button>
 <label><h2>Item List </h2></label>
 <table>
 <tr>
 	<div style=" border: 3px solid #848484;margin-top: 20px;">
 		<ul style="list-style-type:none">
 		<li>Google Pixel 2</li>
-			<li><img src="images/pixel2.jpeg" alt="" onclick="javascript:activatePortal()"></li>
+			<li><img src="images/pixel2.jpeg" alt="" onclick="javascript:addPreviewPortal('p2.html')"></li>
 		</ul>
 	</div>
 	</tr>
@@ -197,7 +298,7 @@ img {
 	<div style=" border: 3px solid #848484;margin-top: 20px;">
 		<ul style="list-style-type:none">
 		<li>Google Pixel 3</li>
-			<li><img src="images/pixel3.jpeg" alt="" onclick="javascript:activatePortal()"> </li>
+			<li><img src="images/pixel3.jpeg" alt="" onclick="javascript:addPreviewPortal('p2.html')"> </li>
 		</ul>
 	</div>
 </tr>
@@ -205,7 +306,7 @@ img {
 	<div style=" border: 3px solid #848484;margin-top: 20px;">
 		<ul style="list-style-type:none">
 		<li>Google Pixel 1</li>
-			<li><img src="images/pixel1.jpeg" alt="" onclick="javascript:activatePortal()"></li>
+			<li><img src="images/pixel1.jpeg" alt="" onclick="javascript:addPreviewPortal('p2.html')"></li>
 		</ul>
 	</div>
 </tr>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+
+<meta name="description" content="periodic background sync API Demo"/>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
 <link rel="manifest" href="./manifest.json">
@@ -38,14 +41,25 @@
   
   const registerPBS = async () => {
 	  log('calling navigator.permissions.query');
+	  
+	  //Check 
+	 const installed = window.matchMedia('(display-mode: standalone)').matches;
+  	
+	if(!installed){
+		log('Error: PWA should be installed to proceed ahead!!')
+		return;
+	}else{
+		log('PWA is installed.')
+	}
+	  
 	  const status = await navigator.permissions.query({
 		  name: 'periodic-background-sync',
 		});
 		if (status.state === 'granted') {
-			log('Permission granted');
+			log('Permission granted, status.state: '+status.state);
 			
 		} else {
-			log('Permission denied');
+			log('Permission denied, status.state: '+ status.state);
 			return;
 		}
 		
@@ -53,8 +67,7 @@
 		if ('periodicSync' in registration) {
 		  try {
 		    registration.periodicSync.register('content-sync', {
-			//sync every minute
-			minInterval:  60 * 1000,
+			minInterval:  24 * 60 * 60 * 1000,//ones per day
 		    });
 		    log('Registered PBS');
 		  } catch (error) {
@@ -87,10 +100,7 @@
 </script>
 
 
-<meta charset="UTF-8">
-<meta http-equiv="origin-trial" content="Aj+LFKgH++bPLFhAuyokZPwzYHEu2rf9roH/iHoKaNr5m9XeJD51qCrbsz7ZlG4YJa/Jxfsc1EbGxsqIDjw6hAMAAABmeyJvcmlnaW4iOiJodHRwczovL213ZWItZGVtb3MuYXBwc3BvdC5jb206NDQzIiwiZmVhdHVyZSI6IlBlcmlvZGljQmFja2dyb3VuZFN5bmMiLCJleHBpcnkiOjE1NzM3MTAxMjF9">
 
-<meta name="description" content="periodic background sync API Demo"/>
 <meta name="viewport"
 	content="width=device-width,minimum-scale=1,initial-scale=1">
 <link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />

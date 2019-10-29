@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<meta name="description" content="periodic background sync API Demo"/>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#33C3F0"/>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112374941-1');
+ 
+  function pageView(){
+	  ga('send', 'pageview', location.pathname);
+	  
+  }
+  
+
+  
+  const log = (logMsg) =>
+  {
+		document.getElementById("consoleLog").innerHTML = '<br><br><span>'+ logMsg+'</span>' + document.getElementById("consoleLog").innerHTML;
+		console.log(logMsg);
+  }
+  
+  
+  const checkStatus = async _ => {
+	  
+	  const updateUI = (item, value) => {
+	    const li = document.createElement('li');
+	    li.innerHTML = `<span style='color: gray'>${item}:</span> ${value}`;
+	    document.querySelector('#status').appendChild(li);
+	  }
+	  
+	  try {
+	    // install Service Worker  
+	    await navigator.serviceWorker.register('/serviceworker.js');
+
+	    // 1. check the display-mode
+	    const matchResult = window.matchMedia('(display-mode: standalone)').matches;
+	    log('is-display-mode-standalone', matchResult);
+
+	    // 2. check the permission
+	    const status = await navigator.permissions.query({name: 'periodic-background-sync'});
+	    log('navigator-permissions-query-status', status.state);
+
+	    // 3. check if the serviceWorker is registered
+	    const registration = await navigator.serviceWorker.ready;
+	    log('is-service-worker-ready', !!registration);
+
+	    // 4. check if PBS is supported
+	    const isPBSSupported = 'periodicSync' in registration;
+	    if(!isPBSSupported) {
+	      return;
+	    }
+	    log('is-PBS-supported', isPBSSupported);
+
+	    // 5. check if the PBS registration succeeded
+	    let hasPBSRegSucceeded = false;
+	    try {
+	      // Register a PBS event
+	      await registration.periodicSync.register('content-sync', {
+	        // An interval of one day.
+	        minInterval: 24 * 60 * 60 * 1000,
+	      });  
+	      hasPBSRegSucceeded = true;
+	    } catch (e) {
+	      hasPBSRegSucceeded = false;
+	    }
+	    log('has-PBS-registration-succeeded', hasPBSRegSucceeded);
+
+	    // 6. check if the tag has been successfully registered
+	    const tags = await registration.periodicSync.getTags();
+	    log('PBS-tags', tags);
+
+	    window.addEventListener('message', evt => {
+	      const tagName = evt.data.tagName;
+	      log('PBS-has-fired-with-a-tag-name-of', tagName);
+	    });        
+	  } catch (e) {
+	    log('Exception', e);
+	  }
+	}
+
+	checkStatus();    
+
+  
+</script>
+
+
+
+<meta name="viewport"
+	content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
+<title>Periodic background sync API Demo</title>
+
+<style type="text/css">
+.small-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	margin-bottom: 10px;
+	right: 10px;
+}
+
+.main-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	border-color: #33C3F0;
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+p {
+	margin-top: 0;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+div {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+
+body {
+	max-width: 600px;
+	margin: 10px;
+	float: none !important;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body>
+
+	<h1>Periodic background sync API Demo</h1>
+
+	<p>
+		Periodic background sync API Demo <a href="https://developers.google.com/web/updates/2019/08/periodic-background-sync"> [Details]</a>. 
+	</p>
+
+
+
+
+	<label><h2>Console Output:</h2></label>
+	<div style="border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;">
+	<p id="consoleLog"></p>
+	</div>
+
+	<div id="snackbar"></div>
+</body>
+</html>
