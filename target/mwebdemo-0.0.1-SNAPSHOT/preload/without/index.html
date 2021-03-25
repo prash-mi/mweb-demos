@@ -1,0 +1,334 @@
+<!-- Re purposing the code @ https://uskay-portals-demo.glitch.me/ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!--<link rel="preload" href="images/pixel5.webp" as="image"> -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#33C3F0"/>
+
+<style type="text/css">
+
+
+</style>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112374941-1');
+
+  function pageView(){
+	  ga('send', 'pageview', location.pathname);
+
+  }
+
+  const log = logMsg => {
+		document.getElementById("consoleLog").innerHTML = document.getElementById("consoleLog").innerHTML + '<br><br><span>'+ logMsg+'</span>';
+		console.log(logMsg);
+	}
+
+  function registerSW(){
+	/*  if ('serviceWorker' in navigator) {
+		    navigator.serviceWorker
+		             .register('./serviceworker.js')
+		             .then(function() { log('Service Worker Registered'); })
+		             .catch((e)=>{log('Error registering SW: '+e);});
+		  }else{
+			  log('Service worker isn\'t supported');
+		  }
+      */
+  }
+
+
+  /////
+
+  /*
+
+      portal {
+        position:fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition:
+            transform 0.4s,
+            bottom 0.7s,
+            left 0.7s,
+            opacity 1.0s;
+        box-shadow: 0 0 20px 10px #999;
+        transform: scale(${initialScale});
+        bottom: calc(20px + 50% * ${initialScale} - 50%);
+        left: calc(20px + 50% * ${initialScale} - 50%);
+        z-index: 10000;
+    }
+
+  */
+
+/*
+  const addPreviewPortal = url => {
+    // Remove any exisiting portals
+
+    const existingPortal = document.querySelector('portal');
+    if (existingPortal) {
+        existingPortal.remove();
+    }
+
+    // Adding some styles with transitions
+    const style = document.createElement('style');
+    const initialScale = 0.4;
+    style.innerHTML = `
+    	 portal {
+        width:80%;
+        height: 80%;
+        overflow: scroll;
+        position: absolute;
+        border-radius: 3px;
+        top: 20%;
+        bottom:20%;
+        left:10%;
+        right:10%;
+        cursor: pointer;
+
+
+        transition:
+            transform 0.4s,
+            bottom 0.2s,
+            left 0.2s,
+            opacity 1.0s;
+        transform: scale(0.8);
+        z-index: 10000;
+
+    }
+    .portal-reveal {
+        transform: scale(1.0);
+        bottom: 0px;
+        left: 0px;
+    }
+    .fade-in {
+        opacity: 1.0;
+    }
+    `;
+    const portal = document.createElement('portal');
+    portal.src = url;
+    portal.addEventListener('click', evt => {
+        // Animate the portal once user interacts
+        portal.classList.add('portal-reveal');
+    });
+    portal.addEventListener('transitionend', evt => {
+        if (evt.propertyName == 'bottom') {
+            // Activate the portal once the transition has completed
+            portal.activate();
+        }
+    });
+    document.body.append(style, portal);
+
+    // Waiting for the page (portal host) to load.
+    // using setTimeout is a suboptimal way and it’s best to fade-in
+    // when receiving a load complete message from the portal
+    setTimeout(_ => portal.classList.add('fade-in'), 2000);
+
+// If portal is available init the app
+
+//if ('HTMLPortalElement' in window) {
+      //  addPreviewPortal('https://google.com');
+//}
+
+
+  }
+*/
+
+/*
+  const hidePortalPreview = _=>{
+	  const existingPortal = document.querySelector('portal');
+	    if (existingPortal) {
+	        existingPortal.remove();
+	        log('Hidden');
+	    } else{
+	      	log('Portal not available');
+	    }
+  }
+*/
+  </script>
+
+
+<meta charset="UTF-8">
+<meta name="description" content=""/>
+<meta name="viewport"
+	content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
+<title>No Preload</title>
+
+<style type="text/css">
+.small-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	margin-bottom: 10px;
+	right: 10px;
+}
+
+.main-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	border-color: #33C3F0;
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+p {
+	margin-top: 0;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+div {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+
+body {
+	max-width: 600px;
+	margin: 10px;
+	float: none !important;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body onload="javascript:pageView();registerSW()">
+
+	<h1>Not Preloading Critical Assets of the next page</h1>
+	<p> Click on one of the products below to continue </p>
+	<!--<button onclick="javascript:hidePortalPreview()"> Hide Preview </button>-->
+<label><h2>Item List </h2></label>
+<table>
+<tr>
+	<div style=" border: 3px solid #848484;margin-top: 20px;">
+		<ul style="list-style-type:none">
+		<li>Google Pixel 5</li>
+			<li><a href="p2.html"><img src="images/pixel2.jpeg" alt="" ></a></li>
+		</ul>
+	</div>
+	</tr>
+<tr>
+	<div style=" border: 3px solid #848484;margin-top: 20px;">
+		<ul style="list-style-type:none">
+		<li>Google Pixel 3</li>
+			<li><img src="images/pixel3.jpeg" alt=""> </li>
+		</ul>
+	</div>
+</tr>
+<tr>
+	<div style=" border: 3px solid #848484;margin-top: 20px;">
+		<ul style="list-style-type:none">
+		<li>Google Pixel 1</li>
+			<li><img src="images/pixel1.jpeg" alt="" ></li>
+		</ul>
+	</div>
+</tr>
+</table>
+
+
+
+
+
+	<label><h2>Console Output:</h2></label>
+	<div style="border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;">
+	<p id="consoleLog"></p>
+	</div>
+
+	<div id="snackbar"></div>
+</body>
+</html>

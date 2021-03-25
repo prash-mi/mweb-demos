@@ -17,13 +17,13 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-112374941-1');
-  
+
   function pageView(){
 	  ga('send', 'pageview', location.pathname);
   }
-  
+
 </script>
-  
+
 </head>
 <body onload="javascript:pageView()">
     <h1>mWeb Demos</h1>
@@ -33,7 +33,7 @@
     <tr>
       <td colspan="2" style="font-weight:bold;">Available Links:</td>
     </tr>
-  
+
       <tr>
       <td><a href='payment-request/'>Payment Request Demo</a></td>
     </tr>
@@ -53,10 +53,10 @@
 			<td><a href='payment-request-tez-pwa/'>Payment Request Demo
 					with Tez (as single payment method - PWA)</a></td>
 		</tr>
-		<tr>
+		<!--<tr>
 			<td><a href='/amp/payment-request/'>Payment Request Demo
 					with Tez (AMP - Work in progress!)</a></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td><a href='pwa-in-15/'>PWA in 15 mins code lab</a></td>
 		</tr>
@@ -76,9 +76,9 @@
 		<tr>
 			<td><a href='https://mweb-demos.appspot.com/webshare-api/'>Webshare-API Demo</a></td>
 		</tr>
-		
+
 		<tr>
-			<td><a href='https://mweb-demos.appspot.com/twa/'>Trusted Web Activity</a> | 
+			<td><a href='https://mweb-demos.appspot.com/twa/'>Trusted Web Activity</a> |
 			<a href='https://play.google.com/store/apps/details?id=com.innovativedemoapps.twa.sample&hl=en'>TWA Sample @ Play Store</a></td>
 		</tr>
 			<tr>
@@ -92,22 +92,22 @@
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/geo/'>Geo enabled streaming</a></td>
 		</tr>
-		
+
 			</tr>
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/get-related-apps/'>getInstalledRelatedApps API Demo</a></td>
 		</tr>
-		
+
 			</tr>
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/periodic-background-sync/'>periodic background sync API Demo</a></td>
 		</tr>
-		
+
 			</tr>
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/portal/'>portal demo</a></td>
 		</tr>
-		
+
 	</table>
 
 </body>

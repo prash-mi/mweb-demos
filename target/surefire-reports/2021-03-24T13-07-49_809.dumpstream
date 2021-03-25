@@ -1,0 +1,15 @@
+# Created on 2021-03-24T13:07:49.809
+WARNING: An illegal reflective access operation has occurred
+
+# Created on 2021-03-24T13:07:49.810
+WARNING: Illegal reflective access by org.mockito.cglib.core.ReflectUtils$2 (file:/Users/prasmish/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+
+# Created on 2021-03-24T13:07:49.810
+WARNING: Please consider reporting this to the maintainers of org.mockito.cglib.core.ReflectUtils$2
+
+# Created on 2021-03-24T13:07:49.810
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+
+# Created on 2021-03-24T13:07:49.810
+WARNING: All illegal access operations will be denied in a future release
+

@@ -1,49 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" metadata-complete="true" version="3.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  <context-param>
-    <param-name>org.eclipse.jetty.containerInitializers</param-name>
-    <param-value><![CDATA[
-    "ContainerInitializer{org.eclipse.jetty.apache.jsp.JettyJasperInitializer,interested=[],applicable=[],annotated=[]}"]]></param-value>
-  </context-param>
-  <context-param>
-    <param-name>org.eclipse.jetty.tlds</param-name>
-    <param-value><![CDATA[
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/scriptfree.tld",
+      
+    <context-param>
+            
+        <param-name>org.eclipse.jetty.containerInitializers</param-name>
+            
+        <param-value>
+            <![CDATA[
+    "ContainerInitializer{org.eclipse.jetty.apache.jsp.JettyJasperInitializer,interested=[],applicable=[],annotated=[]}"]]>
+        </param-value>
+          
+    </context-param>
+      
+    <context-param>
+            
+        <param-name>org.eclipse.jetty.tlds</param-name>
+            
+        <param-value>
+            <![CDATA[
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/sql.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/c-1_0.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/c.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fn.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/sql-1_0.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/x-1_0.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/sql.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/sql-1_0-rt.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/fn.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/c-1_0-rt.tld",
     "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/permittedTaglibs.tld",
     "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/sql-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fn.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/sql-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/sql-1_0.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/scriptfree.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fmt-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/x-1_0.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/x-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/x-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/fmt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/c-1_0.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/x.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/c.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/fmt-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_0-rt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/fn.tld",
     "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fmt.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fmt-1_0.tld",
     "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_1.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/permittedTaglibs.tld",
     "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/x.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/c.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/sql.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/sql.tld",
-    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/c-1_0-rt.tld"]]></param-value>
-  </context-param>
-  <context-param>
-    <param-name>org.eclipse.jetty.resources</param-name>
-    <param-value/>
-  </context-param>
-  <context-param>
-    <param-name>org.eclipse.jetty.originAttribute</param-name>
-    <param-value>origin</param-value>
-  </context-param>
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/c-1_0-rt.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/permittedTaglibs.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/x.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/x-1_0-rt.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fmt-1_0.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/x-1_0-rt.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/c.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/scriptfree.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/jstl-1.2.jar!/META-INF/fmt-1_0-rt.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/scriptfree.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/fmt.tld",
+    "jar:${WAR.uri}/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/META-INF/fmt-1_0-rt.tld"]]>
+        </param-value>
+          
+    </context-param>
+      
+    <context-param>
+            
+        <param-name>org.eclipse.jetty.resources</param-name>
+            
+        <param-value/>
+          
+    </context-param>
+      
+    <context-param>
+            
+        <param-name>org.eclipse.jetty.originAttribute</param-name>
+            
+        <param-value>origin</param-value>
+          
+    </context-param>
+      
   
   
   
@@ -51,260 +72,505 @@
   
   
   
-  <servlet>
-    <servlet-name>org.apache.jsp.index_jsp</servlet-name>
-    <servlet-class origin="WebDescriptor(file:///Users/prasmish/eclipse-jee-workspace/mwebdemo/target/appengine-staging/WEB-INF/web.xml):6">org.apache.jsp.index_jsp</servlet-class>
-    <async-supported>false</async-supported>
-  </servlet>
-  <servlet>
-    <servlet-name>org.apache.jsp.pwa_002din_002d15.index_jsp</servlet-name>
-    <servlet-class origin="WebDescriptor(file:///Users/prasmish/eclipse-jee-workspace/mwebdemo/target/appengine-staging/WEB-INF/web.xml):7">org.apache.jsp.pwa_002din_002d15.index_jsp</servlet-class>
-    <async-supported>false</async-supported>
-  </servlet>
-  <servlet>
-    <servlet-name>com.demos.mwebdemo.OneTapAuthServlet</servlet-name>
-    <servlet-class origin="@WebServlet(com.demos.mwebdemo.OneTapAuthServlet):8">com.demos.mwebdemo.OneTapAuthServlet</servlet-class>
-    <async-supported origin="@WebServlet(com.demos.mwebdemo.OneTapAuthServlet):9">false</async-supported>
-  </servlet>
-  <servlet>
-    <servlet-name>com.demos.mwebdemo.WellKnownFetcher</servlet-name>
-    <servlet-class origin="@WebServlet(com.demos.mwebdemo.WellKnownFetcher):10">com.demos.mwebdemo.WellKnownFetcher</servlet-class>
-    <async-supported origin="@WebServlet(com.demos.mwebdemo.WellKnownFetcher):11">false</async-supported>
-  </servlet>
-  <servlet>
-    <servlet-name>com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher</servlet-name>
-    <servlet-class origin="@WebServlet(com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher):12">com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher</servlet-class>
-    <async-supported origin="@WebServlet(com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher):13">false</async-supported>
-  </servlet>
-  <servlet>
-    <servlet-name>FormServlet</servlet-name>
-    <servlet-class origin="@WebServlet(com.demos.mwebdemo.TestServlet):14">com.demos.mwebdemo.TestServlet</servlet-class>
-    <async-supported origin="@WebServlet(com.demos.mwebdemo.TestServlet):15">false</async-supported>
-  </servlet>
-  <servlet>
-    <servlet-name>com.demos.mwebdemo.DummyForm</servlet-name>
-    <servlet-class origin="@WebServlet(com.demos.mwebdemo.DummyForm):16">com.demos.mwebdemo.DummyForm</servlet-class>
-    <async-supported origin="@WebServlet(com.demos.mwebdemo.DummyForm):17">false</async-supported>
-  </servlet>
+    <servlet>
+            
+        <servlet-name>org.apache.jsp.pwa_002din_002d15.index_jsp</servlet-name>
+            
+        <servlet-class origin="WebDescriptor(file:///Users/prasmish/Documents/projects/mweb-demos/target/appengine-staging/WEB-INF/web.xml):6">org.apache.jsp.pwa_002din_002d15.index_jsp</servlet-class>
+            
+        <async-supported>false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
+            
+        <servlet-class origin="WebDescriptor(file:///Users/prasmish/Documents/projects/mweb-demos/target/appengine-staging/WEB-INF/web.xml):7">org.apache.jsp.index_jsp</servlet-class>
+            
+        <async-supported>false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>com.demos.mwebdemo.OneTapAuthServlet</servlet-name>
+            
+        <servlet-class origin="@WebServlet(com.demos.mwebdemo.OneTapAuthServlet):8">com.demos.mwebdemo.OneTapAuthServlet</servlet-class>
+            
+        <async-supported origin="@WebServlet(com.demos.mwebdemo.OneTapAuthServlet):9">false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>com.demos.mwebdemo.WellKnownFetcher</servlet-name>
+            
+        <servlet-class origin="@WebServlet(com.demos.mwebdemo.WellKnownFetcher):10">com.demos.mwebdemo.WellKnownFetcher</servlet-class>
+            
+        <async-supported origin="@WebServlet(com.demos.mwebdemo.WellKnownFetcher):11">false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher</servlet-name>
+            
+        <servlet-class origin="@WebServlet(com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher):12">com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher</servlet-class>
+            
+        <async-supported origin="@WebServlet(com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher):13">false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>FormServlet</servlet-name>
+            
+        <servlet-class origin="@WebServlet(com.demos.mwebdemo.TestServlet):14">com.demos.mwebdemo.TestServlet</servlet-class>
+            
+        <async-supported origin="@WebServlet(com.demos.mwebdemo.TestServlet):15">false</async-supported>
+          
+    </servlet>
+      
+    <servlet>
+            
+        <servlet-name>com.demos.mwebdemo.DummyForm</servlet-name>
+            
+        <servlet-class origin="@WebServlet(com.demos.mwebdemo.DummyForm):16">com.demos.mwebdemo.DummyForm</servlet-class>
+            
+        <async-supported origin="@WebServlet(com.demos.mwebdemo.DummyForm):17">false</async-supported>
+          
+    </servlet>
+      
   
   
   
   
   
-  <servlet-mapping origin="WebDescriptor(file:///Users/prasmish/eclipse-jee-workspace/mwebdemo/target/appengine-staging/WEB-INF/web.xml):23">
-    <servlet-name>org.apache.jsp.index_jsp</servlet-name>
-    <url-pattern>/index.jsp</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping origin="WebDescriptor(file:///Users/prasmish/eclipse-jee-workspace/mwebdemo/target/appengine-staging/WEB-INF/web.xml):24">
-    <servlet-name>org.apache.jsp.pwa_002din_002d15.index_jsp</servlet-name>
-    <url-pattern>/pwa-in-15/index.jsp</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>com.demos.mwebdemo.OneTapAuthServlet</servlet-name>
-    <url-pattern>/onetapauth</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>com.demos.mwebdemo.WellKnownFetcher</servlet-name>
-    <url-pattern>/.well-known/assetlinks.json</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher</servlet-name>
-    <url-pattern>/.well-known/amphtml/apikey.pub</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>FormServlet</servlet-name>
-    <url-pattern>/formservlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>com.demos.mwebdemo.DummyForm</servlet-name>
-    <url-pattern>/dummyform</url-pattern>
-  </servlet-mapping>
-  <security-role>
-    <role-name>admin</role-name>
-  </security-role>
+    <servlet-mapping origin="WebDescriptor(file:///Users/prasmish/Documents/projects/mweb-demos/target/appengine-staging/WEB-INF/web.xml):23">
+            
+        <servlet-name>org.apache.jsp.pwa_002din_002d15.index_jsp</servlet-name>
+            
+        <url-pattern>/pwa-in-15/index.jsp</url-pattern>
+          
+    </servlet-mapping>
+      
+    <servlet-mapping origin="WebDescriptor(file:///Users/prasmish/Documents/projects/mweb-demos/target/appengine-staging/WEB-INF/web.xml):24">
+            
+        <servlet-name>org.apache.jsp.index_jsp</servlet-name>
+            
+        <url-pattern>/index.jsp</url-pattern>
+          
+    </servlet-mapping>
+      
+    <servlet-mapping>
+            
+        <servlet-name>com.demos.mwebdemo.OneTapAuthServlet</servlet-name>
+            
+        <url-pattern>/onetapauth</url-pattern>
+          
+    </servlet-mapping>
+      
+    <servlet-mapping>
+            
+        <servlet-name>com.demos.mwebdemo.WellKnownFetcher</servlet-name>
+            
+        <url-pattern>/.well-known/assetlinks.json</url-pattern>
+          
+    </servlet-mapping>
+      
+    <servlet-mapping>
+            
+        <servlet-name>com.demos.mwebdemo.AMPCacheUpdatePubKeyFetcher</servlet-name>
+            
+        <url-pattern>/.well-known/amphtml/apikey.pub</url-pattern>
+          
+    </servlet-mapping>
+      
+    <servlet-mapping>
+            
+        <servlet-name>FormServlet</servlet-name>
+            
+        <url-pattern>/formservlet</url-pattern>
+          
+    </servlet-mapping>
+      
+    <servlet-mapping>
+            
+        <servlet-name>com.demos.mwebdemo.DummyForm</servlet-name>
+            
+        <url-pattern>/dummyform</url-pattern>
+          
+    </servlet-mapping>
+      
+    <security-role>
+            
+        <role-name>admin</role-name>
+          
+    </security-role>
+      
   
   
   
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>mweb-demo-modules</web-resource-name>
-      <url-pattern origin="WebDescriptor(file:///Users/prasmish/eclipse-jee-workspace/mwebdemo/target/appengine-staging/WEB-INF/web.xml):28">/*</url-pattern>
-    </web-resource-collection>
-    <user-data-constraint>
-      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-    </user-data-constraint>
-  </security-constraint>
-  <welcome-file-list>
+    <security-constraint>
+            
+        <web-resource-collection>
+                  
+            <web-resource-name>mweb-demo-modules</web-resource-name>
+                  
+            <url-pattern origin="WebDescriptor(file:///Users/prasmish/Documents/projects/mweb-demos/target/appengine-staging/WEB-INF/web.xml):28">/*</url-pattern>
+                
+        </web-resource-collection>
+            
+        <user-data-constraint>
+                  
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+                
+        </user-data-constraint>
+          
+    </security-constraint>
+      
+    <welcome-file-list>
     
     
   </welcome-file-list>
-  <locale-encoding-mapping-list>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):29">
-      <locale>de</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):30">
-      <locale>no</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):31">
-      <locale>be</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):32">
-      <locale>fi</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):33">
-      <locale>ru</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):34">
-      <locale>pt</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):35">
-      <locale>bg</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):36">
-      <locale>lt</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):37">
-      <locale>hr</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):38">
-      <locale>lv</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):39">
-      <locale>fr</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):40">
-      <locale>hu</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):41">
-      <locale>zh_TW</locale>
-      <encoding>Big5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):42">
-      <locale>sh</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):43">
-      <locale>uk</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):44">
-      <locale>sk</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):45">
-      <locale>sl</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):46">
-      <locale>ca</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):47">
-      <locale>mk</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):48">
-      <locale>sq</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):49">
-      <locale>sr</locale>
-      <encoding>ISO-8859-5</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):50">
-      <locale>sv</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):51">
-      <locale>ko</locale>
-      <encoding>EUC-KR</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):52">
-      <locale>el</locale>
-      <encoding>ISO-8859-7</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):53">
-      <locale>en</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):54">
-      <locale>is</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):55">
-      <locale>it</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):56">
-      <locale>es</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):57">
-      <locale>iw</locale>
-      <encoding>ISO-8859-8</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):58">
-      <locale>zh</locale>
-      <encoding>GB2312</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):59">
-      <locale>et</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):60">
-      <locale>cs</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):61">
-      <locale>ar</locale>
-      <encoding>ISO-8859-6</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):62">
-      <locale>ja</locale>
-      <encoding>Shift_JIS</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):63">
-      <locale>pl</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):64">
-      <locale>da</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):65">
-      <locale>ro</locale>
-      <encoding>ISO-8859-2</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):66">
-      <locale>nl</locale>
-      <encoding>ISO-8859-1</encoding>
-    </locale-encoding-mapping>
-    <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):67">
-      <locale>tr</locale>
-      <encoding>ISO-8859-9</encoding>
-    </locale-encoding-mapping>
-  </locale-encoding-mapping-list>
-  <session-config>
-    <session-timeout>1440</session-timeout>
-    <cookie-config>
-      <name>JSESSIONID</name>
-      <http-only>false</http-only>
-      <secure>false</secure>
-      <max-age>-1</max-age>
-    </cookie-config>
-    <tracking-mode>COOKIE</tracking-mode>
-    <tracking-mode>URL</tracking-mode>
-  </session-config>
+      
+    <locale-encoding-mapping-list>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):29">
+                  
+            <locale>de</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):30">
+                  
+            <locale>no</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):31">
+                  
+            <locale>be</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):32">
+                  
+            <locale>fi</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):33">
+                  
+            <locale>ru</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):34">
+                  
+            <locale>pt</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):35">
+                  
+            <locale>bg</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):36">
+                  
+            <locale>lt</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):37">
+                  
+            <locale>hr</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):38">
+                  
+            <locale>lv</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):39">
+                  
+            <locale>fr</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):40">
+                  
+            <locale>hu</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):41">
+                  
+            <locale>zh_TW</locale>
+                  
+            <encoding>Big5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):42">
+                  
+            <locale>sh</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):43">
+                  
+            <locale>uk</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):44">
+                  
+            <locale>sk</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):45">
+                  
+            <locale>sl</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):46">
+                  
+            <locale>ca</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):47">
+                  
+            <locale>mk</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):48">
+                  
+            <locale>sq</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):49">
+                  
+            <locale>sr</locale>
+                  
+            <encoding>ISO-8859-5</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):50">
+                  
+            <locale>sv</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):51">
+                  
+            <locale>ko</locale>
+                  
+            <encoding>EUC-KR</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):52">
+                  
+            <locale>el</locale>
+                  
+            <encoding>ISO-8859-7</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):53">
+                  
+            <locale>en</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):54">
+                  
+            <locale>is</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):55">
+                  
+            <locale>it</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):56">
+                  
+            <locale>es</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):57">
+                  
+            <locale>iw</locale>
+                  
+            <encoding>ISO-8859-8</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):58">
+                  
+            <locale>zh</locale>
+                  
+            <encoding>GB2312</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):59">
+                  
+            <locale>et</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):60">
+                  
+            <locale>cs</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):61">
+                  
+            <locale>ar</locale>
+                  
+            <encoding>ISO-8859-6</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):62">
+                  
+            <locale>ja</locale>
+                  
+            <encoding>Shift_JIS</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):63">
+                  
+            <locale>pl</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):64">
+                  
+            <locale>da</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):65">
+                  
+            <locale>ro</locale>
+                  
+            <encoding>ISO-8859-2</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):66">
+                  
+            <locale>nl</locale>
+                  
+            <encoding>ISO-8859-1</encoding>
+                
+        </locale-encoding-mapping>
+            
+        <locale-encoding-mapping origin="DefaultsDescriptor(file:///Users/prasmish/Downloads/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/docs/webdefault.xml):67">
+                  
+            <locale>tr</locale>
+                  
+            <encoding>ISO-8859-9</encoding>
+                
+        </locale-encoding-mapping>
+          
+    </locale-encoding-mapping-list>
+      
+    <session-config>
+            
+        <session-timeout>1440</session-timeout>
+            
+        <cookie-config>
+                  
+            <name>JSESSIONID</name>
+                  
+            <http-only>false</http-only>
+                  
+            <secure>false</secure>
+                  
+            <max-age>-1</max-age>
+                
+        </cookie-config>
+            
+        <tracking-mode>URL</tracking-mode>
+            
+        <tracking-mode>COOKIE</tracking-mode>
+          
+    </session-config>
+    
 </web-app>

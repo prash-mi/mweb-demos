@@ -5,7 +5,9 @@ derived_file_type:
 - java_precompiled
 threadsafe: True
 auto_id_policy: default
-api_version: '1.0'
+beta_settings:
+  'source_reference': 'https://github.com/prash-mi/mweb-demos#abeac4f7108b89cc6d69af98ec4983c25d7a2946'
+api_version: 'user_defined'
 handlers:
 - url: (/.*/)
   static_files: __static__\1index.html

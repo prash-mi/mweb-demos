@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script  src="https://www.googletagmanager.com/gtag/js?id=UA-112374941-1"></script>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#33C3F0"/>
+
+<style type="text/css">
+
+
+</style>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-112374941-1');
+
+  function pageView(){
+	  ga('send', 'pageview', location.pathname);
+
+  }
+
+  const log = logMsg => {
+		document.getElementById("consoleLog").innerHTML = document.getElementById("consoleLog").innerHTML + '<br><br><span>'+ logMsg+'</span>';
+		console.log(logMsg);
+	}
+
+  /*
+  let predecessor;
+  window.addEventListener('portalactivate', (evt) => {
+    //  this.returnFromEmbed(evt.adoptPredecessor());
+   	//  predecessor = evt.adoptPredecessor(document);
+      log('portalactivate');
+
+      predecessor= evt.adoptPredecessor();
+
+    //  document.querySelector('body').appendChild(portal);
+  });
+
+  const goBackToPredesesor = _=> {
+
+	  log('Going back');
+	 // predecessor.activate(); wont work as the parent page isnt portal. Using JS instead
+	  window.location = 'https://mweb-demos.appspot.com/portal/';
+  }
+*/
+
+</script>
+
+
+<meta charset="UTF-8">
+<meta name="description" content="Portal Demo"/>
+<meta name="viewport"
+	content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="https://mweb-demos.appspot.com/favicon-16x16.png" sizes="16x16" />
+<title>Pixel 5</title>
+
+<style type="text/css">
+.small-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	margin-bottom: 10px;
+	right: 10px;
+}
+
+.main-button {
+	color: #FFF;
+	background-color: #33C3F0;
+	border-color: #33C3F0;
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 4px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+p {
+	margin-top: 0;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+div {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+}
+
+body {
+	max-width: 600px;
+	margin: 10px;
+	float: none !important;
+}
+
+#snackbar {
+	visibility: hidden;
+	min-width: 250px;
+	margin-left: -125px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	bottom: 30px;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 30px;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 30px;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body style=" border: 3px solid #848484;margin-top: 20px;">
+
+	<h1>Pixel 5</h1>
+
+<!--	<button onclick="javascript:goBackToPredesesor()"> &lt; Go Back </button> -->
+
+<label><h2>Item Desc: </h2></label>
+	<div >
+			<img src="images/pixel5.webp" alt="" >
+	</div>
+<div >
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+
+	<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+	</div>
+
+
+	<label><h2>Console Output:</h2></label>
+	<div style="border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;">
+	<p id="consoleLog"></p>
+	</div>
+
+	<div id="snackbar"></div>
+</body>
+</html>
