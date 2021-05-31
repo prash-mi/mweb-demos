@@ -22,9 +22,17 @@ const refresh = () => {
     window.location = '/uach';
 }
 
+const toggleClientHintsFieldSet = () => {
+    if(document.getElementById('Accept-CH').checked){
+        document.getElementById("clientHintsFieldSet").disabled = false;
+     }else{
+        document.getElementById("clientHintsFieldSet").disabled = true;
+      }
+}
+
 </script>
 </head>
-<body onload="javascript:ga('send', 'pageview', location.pathname);">
+<body onload="javascript:ga('send', 'pageview', location.pathname);toggleClientHintsFieldSet();">
 <div align="left">
 <p>
 <p>The primary goal of User Agent Client Hints (UA-CH) is to reduce the default entropy
@@ -40,53 +48,59 @@ The UA-CH headers are marked in <b><span style="color:GREEN">Green.</span></b>
 %>
 <form method="get" action="/uach">
     <fieldset>
-      <legend>Select Available Client Hints (These will be sent on the subsequent HTTP Response. Accept-CH must be enabled to use client hints)</legend>
+      <legend>Select Available Client Hints (These will be sent on the subsequent HTTP Response)</legend>
 
        <label>
-          <input type="checkbox" name="Accept-CH" id="Accept-CH" value="1" <%= enabledHints.get("Accept-CH")?"checked":"" %> >
-         <code>Accept-CH</code>
+          <input type="checkbox" name="Accept-CH" id="Accept-CH" value="1" <%= enabledHints.get("Accept-CH")?"checked":"" %> onClick="javascript:toggleClientHintsFieldSet()">
+         <code><b>Accept-CH</b></code>
        </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA-Arch" id="Sec-CH-UA-Arch" value="1" <%= enabledHints.get("Sec-CH-UA-Arch")?"checked":"" %>>
-        <code>Sec-CH-UA-Arch</code>
-      </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA-Full-Version" id="Sec-CH-UA-Full-Version" value="1" <%= enabledHints.get("Sec-CH-UA-Full-Version")?"checked":"" %>>
-        <code>Sec-CH-UA-Full-Version</code>
-      </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA-Mobile" id="Sec-CH-UA-Mobile" value="1" <%= enabledHints.get("Sec-CH-UA-Mobile")?"checked":"" %>>
-        <code>Sec-CH-UA-Mobile</code>
-      </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA-Model" id="Sec-CH-UA-Model" value="1" <%= enabledHints.get("Sec-CH-UA-Model")?"checked":"" %>>
-        <code>Sec-CH-UA-Model</code>
-      </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA-Platform-Version" id="Sec-CH-UA-Platform-Version" value="1" <%= enabledHints.get("Sec-CH-UA-Platform-Version")?"checked":"" %>>
-        <code>Sec-CH-UA-Platform-Version</code>
-      </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA-Platform" id="Sec-CH-UA-Platform" value="1" <%= enabledHints.get("Sec-CH-UA-Platform")?"checked":"" %>>
-        <code>Sec-CH-UA-Platform</code>
-      </label>
-      <label>
-        <input type="checkbox" name="Sec-CH-UA" id="Sec-CH-UA" value="1" <%= enabledHints.get("Sec-CH-UA")?"checked":"" %>>
-        <code>Sec-CH-UA</code>
-      </label>
-       <label>
-        <input type="checkbox" name="Sec-CH-UA-Bitness" id="Sec-CH-UA-Bitness" value="1" <%= enabledHints.get("Sec-CH-UA-Bitness")?"checked":"" %>>
-        <code>Sec-CH-UA-Bitness</code>
-             </label>
+<br/>
+                  <fieldset id="clientHintsFieldSet">
+                     <legend>Accept-CH must be enabled to use client hints</legend>
 
-        <label>
-              <input type="checkbox" name="Viewport-Width" id="Viewport-Width" value="1" <%= enabledHints.get("Viewport-Width")?"checked":"" %>>
-              <code>Viewport-Width</code>
-       </label>
-         <label>
-                     <input type="checkbox" name="Width" id="Width" value="1" <%= enabledHints.get("Width")?"checked":"" %>>
-                     <code>Width</code>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA-Arch" id="Sec-CH-UA-Arch" value="1" <%= enabledHints.get("Sec-CH-UA-Arch")?"checked":"" %>>
+                <code>Sec-CH-UA-Arch</code>
               </label>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA-Full-Version" id="Sec-CH-UA-Full-Version" value="1" <%= enabledHints.get("Sec-CH-UA-Full-Version")?"checked":"" %>>
+                <code>Sec-CH-UA-Full-Version</code>
+              </label>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA-Mobile" id="Sec-CH-UA-Mobile" value="1" <%= enabledHints.get("Sec-CH-UA-Mobile")?"checked":"" %>>
+                <code>Sec-CH-UA-Mobile</code>
+              </label>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA-Model" id="Sec-CH-UA-Model" value="1" <%= enabledHints.get("Sec-CH-UA-Model")?"checked":"" %>>
+                <code>Sec-CH-UA-Model</code>
+              </label>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA-Platform-Version" id="Sec-CH-UA-Platform-Version" value="1" <%= enabledHints.get("Sec-CH-UA-Platform-Version")?"checked":"" %>>
+                <code>Sec-CH-UA-Platform-Version</code>
+              </label>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA-Platform" id="Sec-CH-UA-Platform" value="1" <%= enabledHints.get("Sec-CH-UA-Platform")?"checked":"" %>>
+                <code>Sec-CH-UA-Platform</code>
+              </label>
+              <label>
+                <input type="checkbox" name="Sec-CH-UA" id="Sec-CH-UA" value="1" <%= enabledHints.get("Sec-CH-UA")?"checked":"" %>>
+                <code>Sec-CH-UA</code>
+              </label>
+               <label>
+                <input type="checkbox" name="Sec-CH-UA-Bitness" id="Sec-CH-UA-Bitness" value="1" <%= enabledHints.get("Sec-CH-UA-Bitness")?"checked":"" %>>
+                <code>Sec-CH-UA-Bitness</code>
+                     </label>
+
+                <label>
+                      <input type="checkbox" name="Viewport-Width" id="Viewport-Width" value="1" <%= enabledHints.get("Viewport-Width")?"checked":"" %>>
+                      <code>Viewport-Width</code>
+               </label>
+                 <label>
+                             <input type="checkbox" name="Width" id="Width" value="1" <%= enabledHints.get("Width")?"checked":"" %>>
+                             <code>Width</code>
+                      </label>
+
+            </fieldset>
 
     </fieldset>
 
