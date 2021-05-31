@@ -22,6 +22,14 @@ const refresh = () => {
     window.location = '/uach';
 }
 
+const checkSupport = () =>{
+    if(!(navigator && navigator.userAgentData)){
+        document.getElementById("unSupportedMsg").innerHTML = '<b>UA-CH is not supported on this Browser!</b>'
+    }else{
+        document.getElementById("supportedMsg").innerHTML = 'UA-CH is supported on this Browser!'
+    }
+}
+
 const toggleClientHintsFieldSet = () => {
     if(document.getElementById('Accept-CH').checked){
         document.getElementById("clientHintsFieldSet").disabled = false;
@@ -32,7 +40,9 @@ const toggleClientHintsFieldSet = () => {
 
 </script>
 </head>
-<body onload="javascript:ga('send', 'pageview', location.pathname);toggleClientHintsFieldSet();">
+<body onload="javascript:ga('send', 'pageview', location.pathname);toggleClientHintsFieldSet();checkSupport();">
+
+<br/>
 <div align="left">
 <p>
 <p>The primary goal of User Agent Client Hints (UA-CH) is to reduce the default entropy
@@ -109,6 +119,9 @@ The UA-CH headers are marked in <b><span style="color:GREEN">Green.</span></b>
     <button type="button" onClick="javascript:window.location.reload();">Refresh </button>
     <button type="button" onClick="javascript:refresh();">Clear All </button>
   </form>
+<br/>
+<div style="color:RED" id="unSupportedMsg"> </div>
+<div style="color:GREEN" id="supportedMsg"> </div>
 <br/>
 <label>
     <h3>Request Headers</h2>
