@@ -107,6 +107,9 @@
 			<tr>
 			<td><a href='https://mweb-demos.appspot.com/portal/'>portal demo</a></td>
 		</tr>
+		<tr>
+        			<td><a href="https://mweb-demos.appspot.com/uach">User Agent Client Hints Demo</a></td>
+        		</tr>
 
 	</table>
 
