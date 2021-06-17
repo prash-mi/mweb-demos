@@ -22,7 +22,9 @@ public class UserAgentClientHint extends HttpServlet {
       throws ServletException, IOException {
 
         List<String> clientHintList = ImmutableList.of("Accept-CH","Sec-CH-UA-Arch","Sec-CH-UA-Full-Version","Sec-CH-UA-Mobile",
-                "Sec-CH-UA-Model","Sec-CH-UA-Platform-Version","Sec-CH-UA-Platform","Sec-CH-UA","Sec-CH-UA-Bitness","Viewport-Width", "Width");
+                "Sec-CH-UA-Model","Sec-CH-UA-Platform-Version","Sec-CH-UA-Platform","Sec-CH-UA","Sec-CH-UA-Bitness","Viewport-Width", "Width",
+                "Critical-CH","C_Sec-CH-UA-Arch","C_Sec-CH-UA-Full-Version","C_Sec-CH-UA-Mobile",
+                "C_Sec-CH-UA-Model","C_Sec-CH-UA-Platform-Version","C_Sec-CH-UA-Platform","C_Sec-CH-UA","C_Sec-CH-UA-Bitness","C_Viewport-Width", "C_Width");//C_ prefix implies Crirical CHs
         Set<String> clientHintSet = new HashSet<>();
 
         Map<String, Boolean> enabledHints = new HashMap<>();
@@ -35,16 +37,36 @@ public class UserAgentClientHint extends HttpServlet {
         if (enabledHints.get("Accept-CH")){//if this is enabled
             response.addHeader("Accept-CH", getCH(enabledHints, clientHintList));
         }
+          if (enabledHints.get("Critical-CH")){//if this is enabled
+              response.addHeader("Critical-CH", getCriticalCH(enabledHints, clientHintList));
+          }
         response.addHeader("Content-Type", "text/html; charset=utf-8");
         RequestDispatcher rd=request.getRequestDispatcher("uach-res/index.jsp");
         rd.forward(request, response);//method may be include or forward
 
   }
 
+    private String getCriticalCH(Map<String, Boolean> enabledHints, List<String> clientHintList) {
+        StringBuffer clientHints = new StringBuffer();
+        for (String hint:clientHintList){
+            if (hint.equals("Critical-CH")){
+                continue;
+            }
+            if (enabledHints.get(hint) && hint.startsWith("C_")){//this is enabled and is a critical client hint
+                if (clientHints.length()!=0){
+                    clientHints.append(", ") ;
+                }
+                clientHints.append(hint.substring(2, hint.length()));//ignore C_ prefix
+            }
+        }
+        return clientHints.toString();
+
+    }
+
     private String getCH(Map<String, Boolean> enabledHints, List<String> clientHintList) {
       StringBuffer clientHints = new StringBuffer();
       for (String hint:clientHintList){
-          if (hint.equals("Accept-CH")){
+          if (hint.equals("Accept-CH") || hint.startsWith("C")){//do not append critical client hints here
               continue;
           }
           if (enabledHints.get(hint)){//this is enabled
