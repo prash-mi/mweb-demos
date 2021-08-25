@@ -254,9 +254,17 @@ The UA-CH/Critical-CH headers are marked in <b><span style="color:GREEN">Green.<
 	    %>
 
 	</div>
-
+<%
+ String[] timeLog = (String[])request.getAttribute("timeLog");
+ timeLog[2] = "com.demos.mwebdemo.UserAgentClientHint: Exiting uach-res/index.jsp @ "+com.demos.mwebdemo.UserAgentClientHint.timeFormatter.format(System.currentTimeMillis());
+   boolean logEnabled = request.getParameter("log") != null;
+     if (logEnabled){
+         out.print("<br/><label> <h3>Entry Exit Log: </h2> </label><div style=\"border: 3px solid #848484; margin-top: 20px;background-color: black; color: white;\">");
+         for(String log:timeLog){
+            out.print("<br><br><span>"+log+"</span>");
+         }
+         out.print("</div>");
+     }
+%>
 </body>
 </html>
-<%
-com.demos.mwebdemo.UserAgentClientHint.logTimeStamp(request, "com.demos.mwebdemo.UserAgentClientHint: Exiting uach-res/index.jsp @ ");
-%>
