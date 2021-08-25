@@ -4,7 +4,10 @@ import com.google.appengine.api.utils.SystemProperty;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
+
 import java.io.IOException;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.annotation.WebServlet;
@@ -16,11 +19,17 @@ import javax.servlet.http.*;
 
 @WebServlet("/uach")
 public class UserAgentClientHint extends HttpServlet {
-
+private static SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
+public static void logTimeStamp(HttpServletRequest request, String msg){
+    boolean logEnabled = request.getParameter("log") != null;
+    if (logEnabled){
+        System.out.println(msg+timeFormatter.format(System.currentTimeMillis()));
+    }
+}
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
+      logTimeStamp(request,"com.demos.mwebdemo.UserAgentClientHint: doGet called @ ");
         List<String> clientHintList = ImmutableList.of("Accept-CH","Sec-CH-UA-Arch","Sec-CH-UA-Full-Version","Sec-CH-UA-Mobile",
                 "Sec-CH-UA-Model","Sec-CH-UA-Platform-Version","Sec-CH-UA-Platform","Sec-CH-UA","Sec-CH-UA-Bitness","Viewport-Width", "Width",
                 "Critical-CH","C_Sec-CH-UA-Arch","C_Sec-CH-UA-Full-Version","C_Sec-CH-UA-Mobile",
@@ -42,6 +51,7 @@ public class UserAgentClientHint extends HttpServlet {
           }
         response.addHeader("Content-Type", "text/html; charset=utf-8");
         RequestDispatcher rd=request.getRequestDispatcher("uach-res/index.jsp");
+        logTimeStamp(request,"com.demos.mwebdemo.UserAgentClientHint: Dispatching Request to uach-res/index.jsp @ ");
         rd.forward(request, response);//method may be include or forward
 
   }
