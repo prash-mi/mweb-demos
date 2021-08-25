@@ -257,3 +257,6 @@ The UA-CH/Critical-CH headers are marked in <b><span style="color:GREEN">Green.<
 
 </body>
 </html>
+<%
+com.demos.mwebdemo.UserAgentClientHint.logTimeStamp(request, "com.demos.mwebdemo.UserAgentClientHint: Exiting uach-res/index.jsp @ ");
+%>
