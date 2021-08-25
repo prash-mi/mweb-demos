@@ -19,17 +19,14 @@ import javax.servlet.http.*;
 
 @WebServlet("/uach")
 public class UserAgentClientHint extends HttpServlet {
-private static SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
-public static void logTimeStamp(HttpServletRequest request, String msg){
-    boolean logEnabled = request.getParameter("log") != null;
-    if (logEnabled){
-        System.out.println(msg+timeFormatter.format(System.currentTimeMillis()));
-    }
-}
+public static SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
+
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      logTimeStamp(request,"com.demos.mwebdemo.UserAgentClientHint: doGet called @ ");
+        String[] timeLog = new String[3];
+        timeLog[0]= "com.demos.mwebdemo.UserAgentClientHint: doGet called @ "+timeFormatter.format(System.currentTimeMillis());
         List<String> clientHintList = ImmutableList.of("Accept-CH","Sec-CH-UA-Arch","Sec-CH-UA-Full-Version","Sec-CH-UA-Mobile",
                 "Sec-CH-UA-Model","Sec-CH-UA-Platform-Version","Sec-CH-UA-Platform","Sec-CH-UA","Sec-CH-UA-Bitness","Viewport-Width", "Width",
                 "Critical-CH","C_Sec-CH-UA-Arch","C_Sec-CH-UA-Full-Version","C_Sec-CH-UA-Mobile",
@@ -51,7 +48,8 @@ public static void logTimeStamp(HttpServletRequest request, String msg){
           }
         response.addHeader("Content-Type", "text/html; charset=utf-8");
         RequestDispatcher rd=request.getRequestDispatcher("uach-res/index.jsp");
-        logTimeStamp(request,"com.demos.mwebdemo.UserAgentClientHint: Dispatching Request to uach-res/index.jsp @ ");
+        timeLog[1]=" com.demos.mwebdemo.UserAgentClientHint: Dispatching Request to uach-res/index.jsp @ "+timeFormatter.format(System.currentTimeMillis());
+        request.setAttribute("timeLog", timeLog);
         rd.forward(request, response);//method may be include or forward
 
   }
