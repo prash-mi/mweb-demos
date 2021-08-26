@@ -265,6 +265,9 @@ The UA-CH/Critical-CH headers are marked in <b><span style="color:GREEN">Green.<
          }
          out.print("</div>");
      }
+long start = ((Long)request.getAttribute("start")).longValue();
+response.addHeader("Server-Timing", "app;desc=\"Total time consumed on the server side app layer in ms\";dur="+(System.currentTimeMillis()-start));
+
 %>
 </body>
 </html>
