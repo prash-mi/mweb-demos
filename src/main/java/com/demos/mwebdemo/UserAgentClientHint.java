@@ -27,6 +27,7 @@ public static SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyy-MM-dd_
       throws ServletException, IOException {
         String[] timeLog = new String[3];
         timeLog[0]= "com.demos.mwebdemo.UserAgentClientHint: doGet called @ "+timeFormatter.format(System.currentTimeMillis());
+        request.setAttribute("start", System.currentTimeMillis());
         List<String> clientHintList = ImmutableList.of("Accept-CH","Sec-CH-UA-Arch","Sec-CH-UA-Full-Version","Sec-CH-UA-Mobile",
                 "Sec-CH-UA-Model","Sec-CH-UA-Platform-Version","Sec-CH-UA-Platform","Sec-CH-UA","Sec-CH-UA-Bitness","Viewport-Width", "Width",
                 "Critical-CH","C_Sec-CH-UA-Arch","C_Sec-CH-UA-Full-Version","C_Sec-CH-UA-Mobile",
