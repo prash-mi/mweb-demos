@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "google-auth-library": "^1.6.1"
+    "google-auth-library": "^8.7.0"
   }
 }
